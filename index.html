@@ -9,14 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F8F6F1;
-            --surface: #FFFFFF;
-            --text: #0F172A;
-            --muted: #475569;
-            --accent: #7C1F2E;
-            --gold: #A68B5B;
-            --border: #E6DFD3;
-            --light: #F1EDE5;
+            --bg: #ffffff;
+            --surface: #ffffff;
+            --text: #0f0f0f;
+            --muted: #444444;
+            --red: #c41e3a;
+            --gold: #d4af37;
+            --border: #e5e5e5;
+            --light: #f5f5f5;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -53,7 +53,7 @@
             text-decoration: none;
             letter-spacing: -.01em;
         }
-        .logo span { color: var(--accent); }
+        .logo span { color: var(--red); }
         nav ul {
             display: none;
             list-style: none;
@@ -81,9 +81,9 @@
             border: 1px solid transparent;
         }
         .btn-primary {
-            background: var(--accent);
+            background: var(--red);
             color: #fff;
-            border-color: var(--accent);
+            border-color: var(--red);
         }
         .btn-primary:hover {
             background: #5C1722;
@@ -147,7 +147,7 @@
         .stat-num {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 1.95rem;
-            color: var(--accent);
+            color: var(--red);
             line-height: 1;
             margin-bottom: .25rem;
         }
@@ -283,7 +283,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--red);
             background: #fff;
         }
         .form-group textarea { min-height: 108px; resize: vertical; }
@@ -330,7 +330,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: var(--accent);
+            background: var(--red);
             color: #fff;
             display: flex;
             align-items: center;
