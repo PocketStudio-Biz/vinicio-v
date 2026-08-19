@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" width="1200" height="600" role="img" aria-label="Decorative background">
+  <rect width="1200" height="600" fill="#0f0f0f"/>
+  <!-- big ear circles motif -->
+  <circle cx="120" cy="120" r="160" fill="#1a1a1a"/>
+  <circle cx="1080" cy="500" r="200" fill="#1a1a1a"/>
+  <circle cx="980" cy="90" r="90" fill="#161616"/>
+  <!-- red accent arcs -->
+  <path d="M0 600 Q300 420 600 600 Z" fill="#c41e3a" opacity="0.18"/>
+  <path d="M600 600 Q900 380 1200 600 Z" fill="#c41e3a" opacity="0.12"/>
+  <!-- glove silhouette hint (stylized, original) -->
+  <g fill="#ffffff" opacity="0.06">
+    <circle cx="300" cy="300" r="40"/>
+    <circle cx="350" cy="280" r="22"/>
+    <circle cx="350" cy="320" r="22"/>
+    <circle cx="345" cy="360" r="22"/>
+    <rect x="300" y="300" width="70" height="80" rx="20"/>
+  </g>
+</svg>
