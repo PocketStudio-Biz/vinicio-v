@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" width="200" height="320" role="img" aria-label="Vinicio V silhouette mark">
+  <g fill="#0f0f0f">
+    <!-- head with two ears -->
+    <circle cx="64" cy="40" r="26"/>
+    <circle cx="136" cy="40" r="26"/>
+    <circle cx="100" cy="78" r="42"/>
+    <!-- body -->
+    <path d="M70 120 Q100 108 130 120 L142 250 Q100 270 58 250 Z"/>
+    <!-- arms with round glove hints -->
+    <circle cx="52" cy="160" r="16"/>
+    <circle cx="148" cy="160" r="16"/>
+    <!-- shoes -->
+    <ellipse cx="74" cy="285" rx="26" ry="14"/>
+    <ellipse cx="126" cy="285" rx="26" ry="14"/>
+  </g>
+  <!-- red accent line (shorts buckle hint) -->
+  <rect x="62" y="196" width="76" height="8" fill="#c41e3a"/>
+</svg>
