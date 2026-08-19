@@ -1,4 +1,4 @@
-# Save3Vinny - Independent Business Lead Generation Website
+# Vinicio V. — Professional Services Lead Generation
 
 **Target:** Vinicio V. - transitioning from TaskRabbit to independent client business
 
@@ -11,7 +11,7 @@ A professional lead-generation website with two booking pathways:
 ## Files
 
 ```
-save3vinny-leadgen/
+vinicio-v-services/
 ├── index.html          # Business website with email form
 ├── data/profile-stats.json  # Auto-updating profile data
 ├── scraper.py          # Daily profile scraper

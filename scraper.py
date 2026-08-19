@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Save3Vinny - Auto-update TaskRabbit profile scraper
+# Vinicio V. - Auto-update TaskRabbit profile scraper
 Fetches daily data from Vinicio V.'s Taskrabbit profile and updates the leadgen website
 """
 
