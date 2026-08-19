@@ -1,0 +1,16 @@
+{
+  "rating": "5.0",
+  "reviews": 55,
+  "tasks": 214,
+  "location": "Seattle, WA",
+  "services": [
+    {"name": "Yard Work", "count": 21, "price": "$41.29/hr", "icon": "fas fa-leaf"},
+    {"name": "Cleaning", "count": 35, "price": "$47.49/hr", "icon": "fas fa-broom"},
+    {"name": "Moving Help", "count": 13, "price": "$43.33/hr", "icon": "fas fa-box-open"},
+    {"name": "Car Washing", "count": 7, "price": "$49.55/hr", "icon": "fas fa-car-wash"},
+    {"name": "Estate Cleanout", "count": 5, "price": "$50/hr", "icon": "fas fa-home"},
+    {"name": "Laundry Service", "count": 1, "price": "$32/hr", "icon": "fas fa-tshirt"}
+  ],
+  "last_updated": "2026-08-18",
+  "profile_url": "https://www.taskrabbit.com/profile/vinicio-v--2"
+}
