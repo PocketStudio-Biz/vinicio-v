@@ -404,31 +404,9 @@
     <section id="reviews" class="testimonials">
         <div class="section-title">
             <h2>Client Testimonials</h2>
-            <p>Real feedback from past jobs</p>
+            <p>Real feedback from past jobs — shuffling through all 55 reviews</p>
         </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-content">"10 stars! Super thorough and careful. Would love to hire him again."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MO</div>
-                    <div><strong>Mack O.</strong><div style="color:var(--gray);font-size:.8rem;">Verified Client</div></div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-content">"Awesome landscaping—grass, mulch, shrubs. Great rate and great work."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">SK</div>
-                    <div><strong>Sid K.</strong><div style="color:var(--gray);font-size:.8rem;">Verified Client</div></div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-content">"Very comprehensive clean. Excellent detail and follow-through."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JM</div>
-                    <div><strong>Jennifer M.</strong><div style="color:var(--gray);font-size:.8rem;">Verified Client</div></div>
-                </div>
-            </div>
-        </div>
+        <div class="testimonial-grid" id="testimonialGrid"></div>
     </section>
 
     <footer class="footer">
@@ -441,6 +419,128 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // All 55 Taskrabbit reviews (42 with text, 13 rating-only)
+        const REVIEWS = [
+            {n:"Annabelle C.", c:"Car Washing", t:"Vinicio did an incredible job- quick and communicative."},
+            {n:"Anuj S.", c:"Car Washing", t:"Very kind, and attentive to detail. Thanks Vinicio. Highly recommend to others"},
+            {n:"Alexa C.", c:"Car Washing", t:"He was fantastic! On time, cleaned very well and throughly, and was so respectful! 10/10!"},
+            {n:"Juan N.", c:"Car Washing", t:"Five stars for Vinicio! He arrived exactly when he said he would and did a phenomenal job detailing my car's interior. Super professional and easy to work with. I'll definitely be hiring him again!"},
+            {n:"Shoaa A.", c:"Cleaning", t:"Vinicio is a hard worker and did a thorough job cleaning our place. He went above and beyond to fix things and clean. This dedication was appreciated."},
+            {n:"Dante M.", c:"Cleaning", t:"Vinicio was AMAZING! He will become our regular to-go person for anything we need around the house and cleaning. The service his did was for a move-in ready cleaning of the house we were about to move-in to. The house smelled like dog, everything was dirty, baseboards were dirty, windows, sinks… and he DETAILED the place. Smells wonderful, it was an amazing experience opening our door and walking through floor that we could literally eat out of it. Can't recommend him enough. THANK YOU again and again!"},
+            {n:"Prasanth D.", c:"Cleaning", t:"Vinicio was great at deep cleaning, had no complaints at the end. Was very kind, courteous and very respectful of time and made sure to go fast but still have attention to detail. Kept checking in to make sure everything was up to satisfaction, highly recommend."},
+            {n:"Brandon R.", c:"Cleaning", t:"In about 2.5 hours he did a deep clean of the bathroom and some quick cleaning in the kitchen (scrubbed sink, top of oven). This time includes a 20 minute trip to the store when he wanted a magic eraser. Everything looks awesome and my tub has never ever been cleaner. Super happy!"},
+            {n:"Jordan W.", c:"Cleaning", t:"Highly highly recommend! Vinicio is multi-talented, efficient, and has a great eye for detail. He hung up multiple shelves and large art pieces for me, installed a new shower filter, and deep cleaned my apartment (even organizing a few tabletop decor items to improve the flow/aesthetic). Would definitely hire again."},
+            {n:"Jennifer M.", c:"Cleaning", t:"Very comprehensive clean. Went to Lowe's to get a specialized cleaner. Did organizing as he cleaned as well."},
+            {n:"Sahil M.", c:"Cleaning", t:"Great work! Very organised and efficient"},
+            {n:"Gregg M.", c:"Cleaning", t:"Gave my place the deep cleaning I really wanted. I was shocked that the Rose results were so good. I would recommend Vinny to anybody."},
+            {n:"Jakob N.", c:"Cleaning", t:""},
+            {n:"Alexandra R.", c:"Cleaning", t:"10/10 recommend! Vinicio was fantastic. Definitely hire him for your house or apartment cleaning. Vinicio cleaned our apartment after we moved out and the place was spotless. He was thorough and cleaned every nook and cranny. He had his own supplies and was a professional. I will definitely be hiring him again. Thanks for the great work!"},
+            {n:"Isabelle B.", c:"Cleaning", t:"Vinicio is an absolute lifesaver. He helped us with a move-out cleaning on extremely short notice and worked tirelessly late at night to make sure everything was spotless. His attention to detail was phenomenal—windows, kitchen, blinds, balcony, even the fridge and stove looked brand new. He was communicative, kind, and incredibly professional throughout, and kept us updated with progress photos. If you're looking for someone reliable, thorough, and genuinely kind, Vinicio is your guy. Thank you again, Vinicio—you made a stressful move so much easier!"},
+            {n:"Shivam S.", c:"Cleaning", t:"Good service"},
+            {n:"prathap k.", c:"Cleaning", t:""},
+            {n:"Amirtha R.", c:"Cleaning", t:"Vini is very detailed with cleaning and was easy to work with"},
+            {n:"Farah B.", c:"Errands", t:"Vinicio was extremely professional, efficient, and helpful. He is easy to communicate with and a great problem solver. I plan to reach out to him again for future tasks and highly recommend him to others!"},
+            {n:"Jason C.", c:"Errands", t:""},
+            {n:"Linda T.", c:"Errands", t:"Great response time and communication was clear."},
+            {n:"Dany A.", c:"Errands", t:"I have hired Vinicio for evaluating the purchase experience for one of our products. Very efficient and communicative. We have hired him twice! Highly recommend."},
+            {n:"Duo J.", c:"Errands", t:""},
+            {n:"Eric L.", c:"Errands", t:""},
+            {n:"Nir S.", c:"Help Moving", t:"Great work"},
+            {n:"Sharon C.", c:"Help Moving", t:"Vinicio is a super star, absolutely exceptional! If I could give more than just 5 stars, I would. I booked Vinicio super last minute for a driving task at around 10pm that I needed to start at 11:30am the next day. We were able to smoothly and quickly work out all the details in a short period of time, and he showed up 10 mins early for our start time. Vinicio literally SAVED MY BUTT after I had injured my ankle while moving, and he helped me to complete my drive in my U-Haul truck from the SeaTac area up to Blaine. Throughout the drive, I got to know Vinicio a little more, and can say that he has such an amazingly bright attitude, is a go-getter, and just has an exceedingly beautiful soul. He was also super caring and patient with my pet cat that rode with us! Vinicio is really a jack of all trades, so whatever it is that you might need help with, please trust me that Vinicio is the man you want to book with. You'll be beyond satisfied with the caring, attentive Tasker that he is! Much love to him, and thank you again Vinicio for your help and time today :)!"},
+            {n:"Christine S.", c:"Help Moving", t:"Vinicio was amazing! He was friendly, focused, a great communicator, and incredibly hardworking and efficient. He paid excellent attention to detail and had great ideas for organizing everything throughout the packing and moving process. 10/10 recommend! As a woman living alone, I felt completely comfortable having Vinicio in my home, which I really appreciated. I look forward to working with him again!"},
+            {n:"Hazel Q.", c:"Help Moving", t:"Came on time, good communication, fast and efficient."},
+            {n:"Sinja M.", c:"Help Moving", t:"Vinci is simply the best. He's helped me with so many different things and even took an extra two hours just to help me move — without ever expecting me to pay him for it (though I did anyway). He even drove to Home Depot for me to find the right replacement part. Without him, I'd still be stuck with so many problems to solve, but he just took care of them for me."},
+            {n:"Michael H.", c:"Help Moving", t:"The best sincerely."},
+            {n:"Sarah S.", c:"Landscaping Help", t:"Vinicio did an AWESOME job cleaning up around my garden, tidying a potting bench area that was covered in leaves and spiderwebs, planting some shrubs and staking vines. Was super communicative, on time, and went above and beyond. It looks amazing and would 10000% hire him again. Thank you Vinicio!"},
+            {n:"Kerry M.", c:"Laundry and Ironing", t:"Vinicio took a completely messy closet and a huge pile of clothes and turned it into a well-organized walk-in closet with hung and neatly folded shirts, pants, jackets, and accessories. He communicated very well to find our place and worked fast and efficiently. Highly recommend!"},
+            {n:"Darla P.", c:"Trash & Furniture Removal", t:"He worked well with me and helped to make sure the job got done correctly."},
+            {n:"Ridwan H.", c:"Trash & Furniture Removal", t:"Responsive and respects your time."},
+            {n:"Sarah S.", c:"Trash & Furniture Removal", t:"Clear communication and got the job done on the same day. Highly recommend"},
+            {n:"yeliz k.", c:"Trash & Furniture Removal", t:""},
+            {n:"Brandon L.", c:"Yard Work", t:""},
+            {n:"Mack O.", c:"Yard Work", t:"10 stars! Best job of any takers I've hired. Super thorough and careful plus friendly and easy to work with on details of the job .. did everything we asked and more . Would love to have him help me with tasks all the time and highly recommend him to everyone! Thank you! Our yard looks so much better!"},
+            {n:"Sid K.", c:"Yard Work", t:"Vini was awesome. I gave him very little direction and he did a much better job landscaping the area in front of my house than I expected. He created a very nice design with grass and mulch and planted multiple beautiful plants. He brought all his tools and purchased all the materials. All at a great rate - would highly recommend Vini for your landscaping projects."},
+            {n:"Luke L.", c:"Yard Work", t:"Quality work, very communicative!"},
+            {n:"Jenna L.", c:"Yard Work", t:""},
+            {n:"Jenna L.", c:"Yard Work", t:""},
+            {n:"Vinod S.", c:"Yard Work", t:"Vinicio was very professional and communicated very clearly on what is required and what he would be able to help me with. This helped in having a clear expectation. He also ensured the backyard looks completely clean and tidy. It was great working with Vinicio and I strongly recommend him for others"},
+            {n:"Jenna L.", c:"Yard Work", t:""},
+            {n:"Priyanka B.", c:"Yard Work", t:""},
+            {n:"Hassan C.", c:"Yard Work", t:"Very professional work. Will hire again"},
+            {n:"Shivani B.", c:"Truck Assisted Help Moving", t:""},
+            {n:"Syed A.", c:"Truck Assisted Help Moving", t:"Vinio will go above and beyond to make sure you get what you're hiring him for, he has a great attitude and was extremely helpful for what I hired him for and then did some more. If you're thinking twice to hire him please do not , he's the best out there !!"},
+            {n:"Neeraj R.", c:"Truck Assisted Help Moving", t:"Vinicio did a great job with my moving task. He was efficient and skilled and made sure to handle items with care."},
+            {n:"Vishal K.", c:"Truck Assisted Help Moving", t:"Vinicio was super fast and was great to work with!"},
+            {n:"Suzanne W.", c:"Truck Assisted Help Moving", t:"Vinicio did a great job! He was flexible with his Scheduling, I had to ask to change the day and he was able to accommodate me. He got my items moved quickly and carefully. I definitely recommend him and hope to use him again."},
+            {n:"Arun C.", c:"Truck Assisted Help Moving", t:"Vini was outstanding. This was clearly a two-person job, but even after I offered to help multiple times, he handled everything on his own with professionalism and efficiency. He also stayed beyond the scheduled time—without charging extra—to make sure the job was completed properly. Highly recommended."},
+            {n:"Troy D.", c:"Personal Assistant", t:"Vinicio was kind and on top of it. Good communication. Would work with him again!"},
+            {n:"Elizabeth L.", c:"Personal Assistant", t:"Vinny completed my task quickly and professionally. He asked thoughtful questions so that he was able to get right to work and complete the task for me. He also offered to go above and beyond what I requested, which I appreciate! Would definitely book again."},
+            {n:"Megha V.", c:"Personal Assistant", t:""}
+        ];
+
+        const VISIBLE = 6; // cards shown at a time
+        let deck = [];
+        let idx = 0;
+
+        function shuffle(arr){
+            const a = arr.slice();
+            for(let i=a.length-1;i>0;i--){
+                const j = Math.floor(Math.random()*(i+1));
+                [a[i],a[j]] = [a[j],a[i]];
+            }
+            return a;
+        }
+        function initials(name){
+            return name.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+        }
+        function cardEl(r){
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+
+            const p = document.createElement('p');
+            p.className = 'testimonial-content';
+            p.textContent = r.t ? `"${r.t}"` : '★★★★★ — left a 5-star rating';
+            card.appendChild(p);
+
+            const author = document.createElement('div');
+            author.className = 'testimonial-author';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'author-avatar';
+            avatar.textContent = initials(r.n);
+            author.appendChild(avatar);
+
+            const meta = document.createElement('div');
+            const name = document.createElement('strong');
+            name.textContent = r.n;
+            const sub = document.createElement('div');
+            sub.style.color = 'var(--gray)';
+            sub.style.fontSize = '.8rem';
+            sub.textContent = `${r.c} · Verified Client`;
+            meta.appendChild(name);
+            meta.appendChild(sub);
+            author.appendChild(meta);
+
+            card.appendChild(author);
+            return card;
+        }
+        function render(){
+            const grid = document.getElementById('testimonialGrid');
+            grid.replaceChildren(); // safe clear
+            const batch = deck.slice(idx, idx+VISIBLE);
+            batch.forEach(r => grid.appendChild(cardEl(r)));
+        }
+        function cycle(){
+            idx += VISIBLE;
+            if(idx >= deck.length){ deck = shuffle(REVIEWS); idx = 0; }
+            render();
+        }
+
+        deck = shuffle(REVIEWS);
+        render();
+        setInterval(cycle, 7000); // shuffle a fresh batch every 7s
+
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const form = this;
