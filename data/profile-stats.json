@@ -1,16 +1,64 @@
 {
-  "rating": "5.0",
-  "reviews": 55,
-  "tasks": 214,
-  "location": "Seattle, WA",
+  "name": "Vinicio V.",
+  "bio": "Part-time Tasker helping pay off student loans \u2014 and genuinely enjoying the work. Integrity and hard work come first. Two-hour minimum on most tasks.",
   "services": [
-    {"name": "Yard Work", "count": 21, "price": "$41.29/hr", "icon": "fas fa-leaf"},
-    {"name": "Cleaning", "count": 35, "price": "$47.49/hr", "icon": "fas fa-broom"},
-    {"name": "Moving Help", "count": 13, "price": "$43.33/hr", "icon": "fas fa-box-open"},
-    {"name": "Car Washing", "count": 7, "price": "$49.55/hr", "icon": "fas fa-car-wash"},
-    {"name": "Estate Cleanout", "count": 5, "price": "$50/hr", "icon": "fas fa-home"},
-    {"name": "Laundry Service", "count": 1, "price": "$32/hr", "icon": "fas fa-tshirt"}
+    {
+      "name": "Yard Work",
+      "count": 21,
+      "price": "$41.29/hr",
+      "blurb": "Mowing, edging, planting, clean-up and landscaping."
+    },
+    {
+      "name": "Cleaning",
+      "count": 35,
+      "price": "$47.49/hr",
+      "blurb": "Deep cleans, move-in/out, organizing \u2014 detail-obsessed."
+    },
+    {
+      "name": "Moving Help",
+      "count": 13,
+      "price": "$43.33/hr",
+      "blurb": "Loading, unloading, in-home moves, furniture."
+    },
+    {
+      "name": "Car Washing",
+      "count": 7,
+      "price": "$49.55/hr",
+      "blurb": "Interior + exterior detailing at your place."
+    },
+    {
+      "name": "Estate Cleanout",
+      "count": 5,
+      "price": "$50/hr",
+      "blurb": "Whole-home clear-outs, sorting, removal."
+    },
+    {
+      "name": "Laundry Service",
+      "count": 1,
+      "price": "$32/hr",
+      "blurb": "Wash, fold, and closet organization."
+    }
   ],
-  "last_updated": "2026-08-18",
-  "profile_url": "https://www.taskrabbit.com/profile/vinicio-v--2"
+  "gallery": [
+    "public/gallery/yard1.jpg",
+    "public/gallery/yard2.jpg",
+    "public/gallery/yard3.jpg",
+    "public/gallery/yard4.jpg",
+    "public/gallery/yard5_large.jpg",
+    "public/gallery/yard6.jpg"
+  ],
+  "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
+  "rating": "5.0",
+  "reviews": 59,
+  "tasks": 217,
+  "location": "Seattle, WA",
+  "since": 2023,
+  "vehicles": "Car",
+  "profile_url": "https://www.taskrabbit.com/profile/vinicio-v--2",
+  "travelFee": {
+    "feeWaived": true,
+    "label": "Travel fee temporarily waived",
+    "sublabel": "No extra charge for jobs in the Seattle area right now."
+  },
+  "last_updated": "2026-08-24T03:05:28.203163+00:00"
 }

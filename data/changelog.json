@@ -1,0 +1,27 @@
+[
+  {
+    "ts": "2026-08-24T03:05:28.203163+00:00",
+    "changes": [
+      {
+        "field": "reviews",
+        "from": 55,
+        "to": 59
+      },
+      {
+        "field": "tasks",
+        "from": 214,
+        "to": 217
+      },
+      {
+        "field": "since",
+        "from": null,
+        "to": 2023
+      },
+      {
+        "field": "vehicles",
+        "from": null,
+        "to": "Car"
+      }
+    ]
+  }
+]

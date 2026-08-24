@@ -12,7 +12,7 @@ from datetime import datetime
 from pathlib import Path
 
 TASKRABBIT_URL = "https://www.taskrabbit.com/profile/vinicio-v--2"
-OUTPUT_FILE = "/Users/MykeyToft/booking-pages-local/save3vinny-leadgen/data/profile-stats.json"
+OUTPUT_FILE = "data/profile-stats.json"
 
 def scrape_taskrabbit_profile():
     """Scrape the Taskrabbit profile for Vinicio V."""
@@ -104,7 +104,7 @@ def save_data(data):
 
 def update_website(data):
     """Generate updated HTML with new data."""
-    html_path = "/Users/MykeyToft/booking-pages-local/save3vinny-leadgen/index.html"
+    html_path = "index.html"
     
     # Read existing HTML
     with open(html_path, 'r') as f:

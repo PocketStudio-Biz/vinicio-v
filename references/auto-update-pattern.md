@@ -6,7 +6,7 @@ Pattern for creating lead-generation websites that auto-update from public profi
 
 ### Architecture
 ```
-save3vinny-leadgen/
+vinicio-v/
 ├── index.html           # Dynamic website (fetches JSON at runtime)
 ├── data/
 │   └── profile-stats.json  # Scrape target - updated daily
@@ -71,7 +71,7 @@ function updateWebsite(data) {
 
 ### File Locations
 
-- Website: `/Users/MykeyToft/booking-pages-local/save3vinny-leadgen/`
+- Website: `/Users/MykeyToft/booking-pages-local/vinicio-v/`
 - Data: `data/profile-stats.json`
 - Scraper: `scraper.py`
 
