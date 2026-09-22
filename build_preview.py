@@ -239,12 +239,13 @@ footer a:hover {{ color:var(--gold); }}
     <div class="panel">
       <h3>Request a custom quote</h3>
       <p>Need something outside standard services? Send details for a personalized quote.</p>
-      <form id="leadForm" action="{form_action}" method="POST">
-        <input type="hidden" name="_subject" value="New Custom Quote Request">
-        <div class="form-group"><label for="name">Full name</label><input type="text" id="name" name="name" required placeholder="Jane Doe"></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="you@example.com"></div>
-        <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required placeholder="(206) 555-1234"></div>
-        <div class="form-group"><label for="project">Project details</label><textarea id="project" name="project" required placeholder="Describe the work you need..."></textarea></div>
+      <form id="leadForm" action="{form_action}" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Quote request for Vinicio V.">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+        <div class="form-group"><label for="name">Full name</label><input type="text" id="name" name="name" autocomplete="name"></div>
+        <div class="form-group"><label for="email">Email</label><input type="text" id="email" name="email" inputmode="email" autocomplete="email"></div>
+        <div class="form-group"><label for="phone">Phone</label><input type="text" id="phone" name="phone" inputmode="tel" autocomplete="tel"></div>
+        <div class="form-group"><label for="project">Project details</label><textarea id="project" name="message"></textarea></div>
         <button type="submit" class="btn btn-primary" style="width:100%">Send request</button>
       </form>
       <p id="formSuccess" class="msg success" style="display:none;">Request sent. I'll contact you shortly.</p>
@@ -271,10 +272,17 @@ footer a:hover {{ color:var(--gold); }}
 document.getElementById('leadForm').addEventListener('submit', async function(e){{
   e.preventDefault();
   var form=this, data=new FormData(form);
+  if(data.get('_honey')) return;
+  data.delete('_honey');
+  var typed=String(data.get('email')||'').trim();
+  data.delete('email');
+  if(/[^\\s@]+@[^\\s@]+\\.[^\\s@]+/.test(typed)){{ data.set('email', typed); data.set('_replyto', typed); }}
+  else if(typed) data.set('contact', typed);
   var btn=form.querySelector('button'); btn.disabled=true;
   try {{
     var res=await fetch(form.action,{{method:'POST',body:data,headers:{{Accept:'application/json'}}}});
-    if(res.ok){{ form.style.display='none'; document.getElementById('formSuccess').style.display='block'; }}
+    var body=await res.json().catch(function(){{return {{}};}});
+    if(res.ok && body.ok!==false && String(body.success)!=='false'){{ form.style.display='none'; document.getElementById('formSuccess').style.display='block'; }}
     else throw new Error('bad');
   }} catch(err){{ document.getElementById('formError').style.display='block'; }}
   finally {{ btn.disabled=false; }}
