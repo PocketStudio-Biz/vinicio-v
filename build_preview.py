@@ -33,36 +33,26 @@ def small(path: Path, max_w=900, max_h=900) -> str:
 data = json.loads((ROOT / "data" / "profile-stats.json").read_text())
 
 avatar = small(ROOT / "public" / "profile.jpg", 240, 240)
-gallery = [small(ROOT / "public" / "gallery" / Path(g).name) for g in data["gallery"]]
+gallery = []
+for g in data.get("gallery") or []:
+    path = ROOT / g
+    if not path.exists():
+        path = ROOT / "public" / "gallery" / Path(g).name
+    if path.exists():
+        gallery.append(small(path))
 
 services = data["services"]
 reviews = [
-    {"n": "Annabelle C.", "c": "Car Washing", "t": "Vinicio did an incredible job- quick and communicative."},
-    {"n": "Anuj S.", "c": "Car Washing", "t": "Very kind, and attentive to detail. Thanks Vinicio. Highly recommend to others"},
-    {"n": "Alexa C.", "c": "Car Washing", "t": "He was fantastic! On time, cleaned very well and throughly, and was so respectful! 10/10!"},
-    {"n": "Juan N.", "c": "Car Washing", "t": "Five stars for Vinicio! He arrived exactly when he said he would and did a phenomenal job detailing my car's interior."},
-    {"n": "Shoaa A.", "c": "Cleaning", "t": "Vinicio is a hard worker and did a thorough job cleaning our place. He went above and beyond."},
-    {"n": "Dante M.", "c": "Cleaning", "t": "Vinicio was AMAZING! He DETAILED the place. Smells wonderful. Can't recommend him enough!"},
-    {"n": "Prasanth D.", "c": "Cleaning", "t": "Vinicio was great at deep cleaning, very kind, courteous and respectful of time."},
-    {"n": "Jordan W.", "c": "Cleaning", "t": "Highly highly recommend! Vinicio is multi-talented, efficient, and has a great eye for detail."},
-    {"n": "Isabelle B.", "c": "Cleaning", "t": "Vinicio is an absolute lifesaver. His attention to detail was phenomenal — windows, kitchen, blinds, balcony."},
-    {"n": "Alexandra R.", "c": "Cleaning", "t": "10/10 recommend! Vinicio cleaned our apartment after we moved out and the place was spotless."},
-    {"n": "Farah B.", "c": "Errands", "t": "Vinicio was extremely professional, efficient, and helpful. A great problem solver."},
-    {"n": "Nir S.", "c": "Help Moving", "t": "Great work"},
-    {"n": "Sharon C.", "c": "Help Moving", "t": "Vinicio is a super star, absolutely exceptional! Showed up 10 mins early."},
-    {"n": "Christine S.", "c": "Help Moving", "t": "Vinicio was amazing! Friendly, focused, a great communicator, and incredibly hardworking."},
-    {"n": "Sinja M.", "c": "Help Moving", "t": "Vinci is simply the best. He even took an extra two hours just to help me move."},
-    {"n": "Sarah S.", "c": "Landscaping Help", "t": "Vinicio did an AWESOME job cleaning up around my garden… would 10000% hire him again."},
-    {"n": "Kerry M.", "c": "Laundry and Ironing", "t": "Vinicio turned a messy closet into a well-organized walk-in closet."},
-    {"n": "Mack O.", "c": "Yard Work", "t": "10 stars! Our yard looks so much better!"},
-    {"n": "Sid K.", "c": "Yard Work", "t": "Vini created a very nice design with grass and mulch and planted beautiful plants."},
-    {"n": "Vinod S.", "c": "Yard Work", "t": "The backyard looks completely clean and tidy. Strongly recommend him."},
-    {"n": "Syed A.", "c": "Truck Assisted Help Moving", "t": "Vinio will go above and beyond to make sure you get what you're hiring him for."},
-    {"n": "Suzanne W.", "c": "Truck Assisted Help Moving", "t": "Got my items moved quickly and carefully. Definitely recommend."},
-    {"n": "Arun C.", "c": "Truck Assisted Help Moving", "t": "Vini was outstanding. Handled a two-person job entirely on his own."},
-    {"n": "Troy D.", "c": "Personal Assistant", "t": "Vinicio was kind and on top of it. Good communication."},
-    {"n": "Elizabeth L.", "c": "Personal Assistant", "t": "Vinny completed my task quickly and professionally. Asked thoughtful questions."},
-]
+    {"n": r["n"], "c": r["c"], "t": r.get("t") or "Left a 5-star rating."}
+    for r in (data.get("testimonials") or [])
+    if r.get("t")
+][:40]
+if not reviews:
+    reviews = [
+        {"n": "Annabelle C.", "c": "Car Washing", "t": "Vinicio did an incredible job- quick and communicative."},
+        {"n": "Dante M.", "c": "Cleaning", "t": "Vinicio was AMAZING! He DETAILED the place. Can't recommend him enough!"},
+        {"n": "Mack O.", "c": "Yard Work", "t": "10 stars! Our yard looks so much better!"},
+    ]
 
 form_action = "https://formspree.io/f/mzblqjkd"
 
