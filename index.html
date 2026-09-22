@@ -29,7 +29,14 @@
         h1, h2, .logo { font-family: Georgia, "Iowan Old Style", Palatino, serif; font-weight: 500; line-height: 1.15; }
 
         a { color: var(--link); }
-        header { border-bottom: 1px solid var(--line); }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+        #services, #work, #reviews, #book { scroll-margin-top: 5.5rem; }
         .header-inner, .hero-inner, .section, .quote-grid, footer .wrap {
             max-width: 860px;
             margin: 0 auto;
