@@ -49,7 +49,7 @@ You can also trigger **Daily TaskRabbit sync** from the Actions tab (`workflow_d
 ### 1. TaskRabbit Booking (Default)
 - Link: `taskrabbit.com/profile/vinicio-v--2`
 - Standard services: Yard Work, Cleaning, Moving, Car Wash
-- Fixed hourly rates (live rates come from the daily sync)
+- Fixed hourly rates ($48.52–$53.68/hr; refreshed by the daily sync)
 
 ### 2. Custom Quote Form
 Captures leads for:
@@ -58,6 +58,7 @@ Captures leads for:
 - Price negotiations
 
 **Submits to:** `berlinsofio80@gmail.com` via Formspree
+
 
 ## Customization
 
