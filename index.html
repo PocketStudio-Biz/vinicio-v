@@ -8,307 +8,238 @@
     <meta property="og:title" content="Vinicio V. — Seattle Professional Services">
     <meta property="og:description" content="Yard work, deep cleaning, moving help, car detailing & estate cleanouts in Seattle. 5.0★ rated.">
     <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --surface: #ffffff;
-            --text: #14110f;
-            --muted: #5b5550;
-            --red: #b5232f;
-            --red-dark: #7d141d;
-            --gold: #b8902f;
-            --border: #ece7e2;
-            --light: #f7f4f1;
-            --shadow: 0 10px 30px rgba(20,17,15,.06);
+            --bg: #f4f1ea;
+            --ink: #241f1a;
+            --muted: #5f584e;
+            --line: #d8d0c3;
+            --link: #8d2f22;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.65;
-            color: var(--text);
+            font-family: "Segoe UI", system-ui, sans-serif;
+            line-height: 1.5;
+            color: var(--ink);
             background: var(--bg);
-            font-size: 15.5px;
-            -webkit-font-smoothing: antialiased;
+            font-size: 17px;
         }
-        h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.15; }
+        h1, h2, .logo { font-family: Georgia, "Iowan Old Style", Palatino, serif; font-weight: 500; line-height: 1.15; }
 
-        header {
-            background: rgba(255,255,255,.92);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        a { color: var(--link); }
+        header { border-bottom: 1px solid var(--line); }
+        .header-inner, .hero-inner, .section, .quote-grid, footer .wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
         }
         .header-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 0 1.4rem;
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            align-items: baseline;
             justify-content: space-between;
-            gap: 1.5rem;
+            gap: .4rem 1.25rem;
+            padding-top: .85rem;
+            padding-bottom: .85rem;
         }
-        .logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.5rem;
-            color: var(--text);
-            text-decoration: none;
-            letter-spacing: -.01em;
-        }
-        .logo span { color: var(--red); }
-        nav ul { display: none; list-style: none; gap: 1.75rem; }
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 500;
-        }
-        nav a:hover { color: var(--text); }
+        .logo { color: var(--ink); text-decoration: none; font-size: 1.35rem; }
+        nav { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; }
+        nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+        nav a:hover { color: var(--ink); text-decoration: underline; }
 
         .btn {
             display: inline-block;
-            padding: .72rem 1.5rem;
-            font-size: .88rem;
-            font-weight: 600;
-            letter-spacing: .3px;
+            padding: .5rem .85rem;
+            font: inherit;
+            font-size: .95rem;
             text-decoration: none;
-            border-radius: 6px;
-            transition: all .18s ease;
             cursor: pointer;
-            border: 1px solid transparent;
-            text-align: center;
+            border: 0;
+            border-radius: 2px;
+            background: var(--ink);
+            color: var(--bg);
         }
-        .btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
-        .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
-        .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
-        .btn-secondary:hover { background: var(--light); }
+        .btn:hover { background: #000; }
+        .text-link { color: var(--link); }
 
-        .hero {
-            background:
-                radial-gradient(1200px 400px at 50% -120px, rgba(184,144,47,.10), transparent),
-                var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 4.5rem 1.4rem 4rem;
-        }
-        .hero-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
-        .hero-avatar {
-            width: 96px; height: 96px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: var(--shadow);
-            margin-bottom: 1.1rem;
-            background: var(--light);
-        }
-        .rating { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: .5rem; }
-        .rating .count { color: var(--muted); letter-spacing: 0; font-size: .85rem; font-weight: 500; }
-        .hero h1 { font-size: clamp(2.1rem, 5.5vw, 3rem); margin-bottom: .55rem; }
-        .hero p.lead {
-            color: var(--muted);
-            max-width: 560px;
-            margin: 0 auto 1.6rem;
-            font-size: 1.02rem;
-        }
-        .hero-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-
-        .stats {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 3rem 1.4rem 2.5rem;
+        .hero { padding: 1.75rem 0 1.25rem; }
+        .hero-inner {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 220px 1fr;
+            gap: 1.5rem 1.75rem;
+            align-items: start;
         }
-        .stat { text-align: center; padding: 1rem .5rem; }
-        .stat-num {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.1rem; color: var(--red); line-height: 1; margin-bottom: .3rem;
+        .hero-avatar {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            background: #e7e1d6;
+            border: 1px solid var(--line);
         }
-        .stat-label {
-            font-size: .76rem; letter-spacing: 1.2px; text-transform: uppercase;
-            color: var(--muted); font-weight: 500;
-        }
+        .hero h1 { font-size: clamp(1.85rem, 4vw, 2.45rem); margin: .15rem 0 .7rem; }
+        .kicker { color: var(--muted); font-size: .95rem; }
+        .hero p.lead { max-width: 38rem; margin-bottom: .85rem; }
+        .facts { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; }
+        .facts b { color: var(--ink); font-weight: 600; }
+        .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.1rem; }
 
-        .section { max-width: 1080px; margin: 0 auto; padding: 3rem 1.4rem; }
-        .section-head { text-align: center; margin-bottom: 2.1rem; }
-        .section-head h2 { font-size: 1.8rem; margin-bottom: .35rem; }
-        .section-head p { color: var(--muted); font-size: .95rem; }
+        .section { padding: 1.6rem 1.25rem 0; }
+        .section-head { margin-bottom: .85rem; }
+        .section-head h2 { font-size: 1.45rem; margin-bottom: .25rem; }
+        .section-head p { color: var(--muted); }
         .travel-note {
             display: none;
-            margin: 1rem auto 0;
-            max-width: 480px;
-            padding: .6rem 1rem;
-            border: 1px solid var(--gold);
-            border-radius: 8px;
-            background: rgba(184,144,47,.08);
-            color: var(--gold);
-            font-size: .9rem;
-            font-weight: 600;
+            margin-top: .55rem;
+            color: var(--ink);
+            font-size: .95rem;
         }
-        .travel-note span { display: block; font-size: .78rem; color: var(--muted); font-weight: 500; margin-top: .2rem; }
+        .travel-note span { display: block; color: var(--muted); margin-top: .1rem; }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.1rem;
-        }
+        .services-grid { border-top: 1px solid var(--line); }
         .service {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.4rem 1.45rem;
-            transition: transform .15s ease, box-shadow .15s ease;
-            display: flex; flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-areas:
+                "name price"
+                "blurb book"
+                "meta book";
+            gap: .1rem 1rem;
+            padding: .85rem 0;
+            border-bottom: 1px solid var(--line);
         }
-        .service:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-        .service-price {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.4rem; color: var(--gold); margin-bottom: .15rem;
+        .service h3 { grid-area: name; font-family: inherit; font-size: 1.05rem; font-weight: 600; }
+        .service-price { grid-area: price; justify-self: end; font-variant-numeric: tabular-nums; font-weight: 600; }
+        .service .blurb { grid-area: blurb; color: var(--muted); font-size: .95rem; }
+        .service .meta { grid-area: meta; color: var(--muted); font-size: .85rem; }
+        .service .btn {
+            grid-area: book;
+            justify-self: end;
+            align-self: end;
+            background: none;
+            color: var(--link);
+            padding: 0;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
-        .service h3 { font-size: 1.08rem; margin-bottom: .25rem; }
-        .service .meta { font-size: .8rem; color: var(--muted); margin-bottom: .55rem; }
-        .service .blurb { font-size: .88rem; color: var(--muted); margin-bottom: 1rem; flex: 1; }
-        .service .btn { font-size: .8rem; padding: .55rem 1.1rem; align-self: flex-start; }
+        .service .btn:hover { background: none; color: var(--ink); }
 
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: .8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-bottom: .25rem;
         }
         .gallery-grid img {
-            width: 100%; height: 190px; object-fit: cover;
-            border-radius: 10px; border: 1px solid var(--border);
-            cursor: pointer; transition: transform .15s ease, box-shadow .15s ease;
+            width: 168px;
+            height: 168px;
+            object-fit: cover;
+            cursor: zoom-in;
+            background: #e7e1d6;
         }
-        .gallery-grid img:hover { transform: scale(1.015); box-shadow: var(--shadow); }
+        .gallery-grid img:nth-child(5) { width: 344px; height: 344px; }
 
         .lightbox {
-            position: fixed; inset: 0; background: rgba(15,12,10,.9);
+            position: fixed; inset: 0; background: rgba(20,16,12,.92);
             display: none; align-items: center; justify-content: center;
-            z-index: 200; padding: 1.5rem; cursor: zoom-out;
+            z-index: 200; padding: 1.25rem; cursor: zoom-out;
         }
         .lightbox.open { display: flex; }
-        .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
+        .lightbox img { max-width: 100%; max-height: 90vh; }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1.3rem;
-        }
-        .feature {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem 1.6rem;
-        }
-        .feature h3 { font-size: 1.02rem; margin-bottom: .35rem; }
-        .feature p { color: var(--muted); font-size: .9rem; }
-
-        .quote-section {
-            background: var(--light);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
+        .quote-section { border-top: 1px solid var(--line); margin-top: 1.75rem; }
         .quote-grid {
-            max-width: 1080px; margin: 0 auto; padding: 3rem 1.4rem;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 1.5rem 2.5rem;
+            padding-top: 1.6rem;
+            padding-bottom: 1.6rem;
         }
-        .panel { border: 1px solid var(--border); border-radius: 10px; background: #fff; padding: 1.9rem 1.85rem; }
-        .panel h3 { font-size: 1.15rem; margin-bottom: .4rem; }
-        .panel p { color: var(--muted); font-size: .92rem; margin-bottom: 1.25rem; }
+        .panel h2 { font-size: 1.45rem; margin-bottom: .45rem; }
+        .panel p { color: var(--muted); margin-bottom: .9rem; }
+        .panel .btn { margin-top: .25rem; }
 
-        .form-group { margin-bottom: 1rem; }
-        .form-group label {
-            display: block; font-size: .78rem; letter-spacing: .5px;
-            text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; font-weight: 500;
-        }
+        .form-group { margin-bottom: .75rem; }
+        .form-group label { display: block; font-size: .9rem; margin-bottom: .2rem; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: .72rem .9rem; border: 1px solid var(--border);
-            border-radius: 6px; background: #fff; font-size: 1rem; font-family: inherit;
-            transition: border-color .15s;
+            width: 100%;
+            padding: .45rem .55rem;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            background: #fffdf8;
+            font: inherit;
+            font-size: 1rem;
+            color: var(--ink);
         }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--red); }
-        .form-group textarea { min-height: 100px; resize: vertical; }
-        .msg { margin-top: .8rem; font-size: .9rem; font-weight: 500; }
-        .msg.success { color: #166534; }
-        .msg.error { color: #9f1239; }
+        .form-group input:focus, .form-group textarea:focus { outline: 2px solid #c4b49a; outline-offset: 1px; }
+        .form-group textarea { min-height: 110px; resize: vertical; }
+        .msg { margin-top: .75rem; }
+        .msg.success { color: #1d5c32; }
+        .msg.error { color: #8d2f22; }
 
-        .testimonials { background: var(--light); }
-        .testimonial-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.3rem;
-        }
-        .testimonial {
-            background: #fff; border: 1px solid var(--border); border-radius: 10px;
-            padding: 1.55rem 1.6rem; display: flex; flex-direction: column; min-height: 200px;
-        }
-        .testimonial p { font-style: italic; color: var(--text); flex: 1; margin-bottom: 1.1rem; font-size: .95rem; }
-        .testimonial-author { display: flex; align-items: center; gap: .7rem; font-size: .9rem; }
-        .avatar {
-            width: 36px; height: 36px; border-radius: 50%; background: var(--red); color: #fff;
-            display: flex; align-items: center; justify-content: center; font-weight: 600;
-            font-size: .78rem; flex-shrink: 0;
-        }
-        .author-meta strong { display: block; font-weight: 600; }
-        .author-meta span { font-size: .75rem; color: var(--muted); }
+        .testimonial-grid { border-top: 1px solid var(--line); }
+        .testimonial { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+        .testimonial p { margin-bottom: .35rem; }
+        .testimonial-author { font-size: .9rem; color: var(--muted); }
+        .avatar { display: none; }
+        .author-meta strong { font-weight: 600; color: var(--ink); }
+        .author-meta strong::after { content: " · "; font-weight: 400; color: var(--muted); }
+        .author-meta span { color: var(--muted); }
 
-        footer { background: var(--text); color: #d1d5db; padding: 2.6rem 1.4rem; text-align: center; font-size: .9rem; }
-        footer a { color: #fff; text-decoration: none; }
-        footer a:hover { color: var(--gold); }
-        .updated { margin-top: 1rem; font-size: .74rem; opacity: .6; }
+        footer { border-top: 1px solid var(--line); margin-top: 1.75rem; padding: 1.25rem 0 2rem; color: var(--muted); font-size: .9rem; }
+        footer a { color: var(--link); }
+        .updated { margin-top: .35rem; }
 
-        @media (min-width: 768px) {
-            nav ul { display: flex; }
-            .header-inner { padding: 0 2rem; }
+        @media (max-width: 680px) {
+            .hero-inner, .quote-grid { grid-template-columns: 1fr; }
+            .hero-avatar { width: 168px; height: 168px; }
+            .gallery-grid img { width: calc(50% - 4px); height: auto; aspect-ratio: 1; }
+            .gallery-grid img:nth-child(5) { width: 100%; }
+            .service { grid-template-areas: "name price" "blurb blurb" "meta book"; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-inner">
-            <a href="#" class="logo">Vinicio V<span>.</span></a>
+            <a href="#" class="logo">Vinicio V.</a>
             <nav>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#why">About</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#book">Book</a></li>
-                </ul>
+                <a href="#services">Rates</a>
+                <a href="#work">Photos</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#book">Quote</a>
             </nav>
-            <a href="https://www.taskrabbit.com/profile/vinicio-v--2" class="btn btn-primary" target="_blank" rel="noopener">Book on TaskRabbit</a>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-inner">
             <img id="heroAvatar" class="hero-avatar" src="public/profile.jpg" alt="Vinicio V.">
-            <div class="rating" id="heroRating">★★★★★ <span class="count" id="heroReviewCount">(— reviews)</span></div>
-            <h1>Professional services.<br>Seattle.</h1>
-            <p class="lead" id="heroLead">Yard work, deep cleaning, moving help & estate services — completed with care.</p>
-            <div class="hero-actions">
-                <a href="https://www.taskrabbit.com/profile/vinicio-v--2" class="btn btn-primary" target="_blank" rel="noopener">Book on TaskRabbit</a>
-                <a href="#book" class="btn btn-secondary">Request a custom quote</a>
+            <div>
+                <p class="kicker">Seattle</p>
+                <h1>Yard work, cleaning, and moving help.</h1>
+                <p class="lead" id="heroLead">Part-time Tasker helping pay off student loans, and genuinely enjoying the work.</p>
+                <p class="facts">
+                    <b id="statTasks">—</b> tasks
+                    · <b id="statRating">—</b> stars
+                    · <span id="heroReviewCount">—</span>
+                    · since <b id="statSince">—</b>
+                    <span id="statReviews" hidden></span>
+                </p>
+                <div class="hero-actions">
+                    <a href="https://www.taskrabbit.com/profile/vinicio-v--2" class="btn" target="_blank" rel="noopener">Book on TaskRabbit</a>
+                    <a href="#book" class="text-link">Something else? Ask for a price.</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="stats" id="stats">
-        <div class="stat"><div class="stat-num" id="statTasks">—</div><div class="stat-label">Tasks Completed</div></div>
-        <div class="stat"><div class="stat-num" id="statRating">—</div><div class="stat-label">Average Rating</div></div>
-        <div class="stat"><div class="stat-num" id="statReviews">—</div><div class="stat-label">Reviews</div></div>
-        <div class="stat"><div class="stat-num" id="statSince">—</div><div class="stat-label">Tasker Since</div></div>
-    </section>
-
     <section id="services" class="section">
         <div class="section-head">
-            <h2>Services &amp; Rates</h2>
-            <p>Current rates from Vinicio's verified TaskRabbit profile</p>
+            <h2>Rates</h2>
+            <p>Hourly, from the TaskRabbit profile. Most jobs have a two-hour minimum.</p>
             <p class="travel-note"></p>
         </div>
         <div class="services-grid" id="servicesGrid"></div>
@@ -316,76 +247,62 @@
 
     <section id="work" class="section">
         <div class="section-head">
-            <h2>Recent work</h2>
-            <p>Real jobs, completed locally</p>
+            <h2>Yards</h2>
+            <p>A few jobs around Seattle. Click a photo to enlarge it.</p>
         </div>
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <section id="why" class="section">
-        <div class="section-head">
-            <h2 id="whyTitle">Why clients choose Vinicio</h2>
-            <p id="whySub">Consistent, professional work every time.</p>
-        </div>
-        <div class="features">
-            <div class="feature"><h3>Attention to detail</h3><p>Every project receives careful, thorough work — nothing half-done.</p></div>
-            <div class="feature"><h3>Reliable &amp; punctual</h3><p>Shows up on time and finishes what is promised.</p></div>
-            <div class="feature"><h3>Clear communication</h3><p>Updates throughout the job and responsive to questions.</p></div>
-            <div class="feature"><h3>Fully equipped</h3><p>Professional tools and supplies for every task.</p></div>
-        </div>
-    </section>
-
     <section id="book" class="quote-section">
-        <p class="travel-note" style="margin-top:3rem;"></p>
         <div class="quote-grid">
-            <div class="panel">
-                <h3>Book directly</h3>
-                <p>Standard services with fixed hourly rates and secure payment through TaskRabbit.</p>
-                <a href="https://www.taskrabbit.com/profile/vinicio-v--2" class="btn btn-primary" target="_blank" rel="noopener">Book on TaskRabbit</a>
+            <div class="panel" id="why">
+                <h2>If it fits TaskRabbit</h2>
+                <p>Yard work, cleaning, moving, car washes, laundry, and estate cleanouts are booked there. TaskRabbit takes the payment.</p>
+                <a href="https://www.taskrabbit.com/profile/vinicio-v--2" class="btn" target="_blank" rel="noopener">Open the profile</a>
             </div>
             <div class="panel">
-                <h3>Request a custom quote</h3>
-                <p>Need something outside standard services? Send details for a personalized quote.</p>
+                <h2>If it doesn't</h2>
+                <p>Send what you need and where. I'll write back if I can do it, and what it would cost.</p>
                 <form id="leadForm" novalidate>
                     <div class="form-group">
-                        <label for="name">Full name</label>
-                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        <input type="email" id="email" name="email" required autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(206) 555-1234">
+                        <input type="tel" id="phone" name="phone" required autocomplete="tel">
                     </div>
                     <div class="form-group">
-                        <label for="project">Project details</label>
-                        <textarea id="project" name="project" required placeholder="Describe the work you need..."></textarea>
+                        <label for="project">The job</label>
+                        <textarea id="project" name="project" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Send request</button>
+                    <button type="submit" class="btn">Send</button>
                 </form>
-                <p id="formSuccess" class="msg success" style="display:none;">Request sent. I'll contact you shortly.</p>
-                <p id="formError" class="msg error" style="display:none;">Something went wrong. Please try again.</p>
+                <p id="formSuccess" class="msg success" style="display:none;">Got it. I'll get back to you.</p>
+                <p id="formError" class="msg error" style="display:none;">That didn't send. Try again in a minute.</p>
             </div>
         </div>
     </section>
 
-    <section id="reviews" class="section testimonials">
+    <section id="reviews" class="section">
         <div class="section-head">
-            <h2>Client feedback</h2>
-            <p id="reviewsSub">Real reviews from completed jobs</p>
+            <h2>What people wrote</h2>
+            <p id="reviewsSub">Copied from the TaskRabbit profile.</p>
         </div>
         <div class="testimonial-grid" id="testimonialGrid"></div>
     </section>
 
     <footer>
-        <p><strong>Vinicio V.</strong> — Seattle professional services</p>
-        <p style="margin-top:.4rem; opacity:.85;">
-            <a href="https://www.taskrabbit.com/profile/vinicio-v--2" target="_blank" rel="noopener">Book on TaskRabbit</a>
-        </p>
-        <p class="updated" id="updated"></p>
-        <p style="margin-top:1rem; font-size:.78rem; opacity:.65;">© <span id="year"></span> Vinicio V. All rights reserved.</p>
+        <div class="wrap">
+            <p>Vinicio V. · Seattle</p>
+            <p><a href="https://www.taskrabbit.com/profile/vinicio-v--2" target="_blank" rel="noopener">taskrabbit.com/profile/vinicio-v--2</a></p>
+            <p class="updated" id="updated"></p>
+            <p>© <span id="year"></span></p>
+        </div>
     </footer>
 
     <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt=""></div>
@@ -429,11 +346,15 @@
 
         // XSS-safe helpers — never inject raw data as HTML
         function txt(id, val){ const el = document.getElementById(id); if (el) el.textContent = val; }
+        function portraitUrl(url){
+            if (!url || !url.includes('res.cloudinary.com')) return url;
+            return url.replace(/\/upload\/(?:[^/]+\/)?(?=v\d+\/)/, '/upload/');
+        }
         function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
         function render(data){
             if (!data) return;
-            txt('heroReviewCount', `(${data.reviews} reviews)`);
+            txt('heroReviewCount', `${data.reviews} reviews`);
             txt('statTasks', `${data.tasks}+`);
             txt('statRating', data.rating);
             txt('statReviews', data.reviews);
@@ -442,7 +363,7 @@
             if (data.bio) txt('heroLead', data.bio);
             if (data.avatar){
                 const av = document.getElementById('heroAvatar');
-                if (av) av.src = data.avatar;
+                if (av) av.src = portraitUrl(data.avatar);
             }
 
             // Services
@@ -487,7 +408,7 @@
 
             if (data.last_updated){
                 const d = new Date(data.last_updated);
-                txt('updated', `Profile stats synced ${isNaN(d) ? data.last_updated : d.toLocaleDateString()} via TaskRabbit`);
+                txt('updated', `Rates checked ${isNaN(d) ? data.last_updated : d.toLocaleDateString()}.`);
             }
         }
 
@@ -496,29 +417,20 @@
         function openLightbox(src){ document.getElementById('lightboxImg').src = src; lb.classList.add('open'); }
         lb.addEventListener('click', () => lb.classList.remove('open'));
 
-        // Testimonials (rotating, shuffled)
-        const VISIBLE = 6; let deck = [], tidx = 0;
-        function shuffle(a){ const x=a.slice(); for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];} return x; }
-        function initials(name){ return name.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
         function cardEl(r){
             const card = el('div','testimonial');
-            card.appendChild(el('p', null, r.t ? `“${r.t}”` : '★★★★★ — left a 5-star rating'));
+            card.appendChild(el('p', null, r.t || 'Left a 5-star rating.'));
             const author = el('div','testimonial-author');
-            author.appendChild(el('div','avatar', initials(r.n)));
             const meta = el('div','author-meta');
             meta.appendChild(el('strong', null, r.n));
-            meta.appendChild(el('span', null, `${r.c} · Verified Client`));
+            meta.appendChild(el('span', null, r.c));
             author.appendChild(meta);
             card.appendChild(author);
             return card;
         }
-        function renderReviews(){
-            const grid = document.getElementById('testimonialGrid');
-            grid.replaceChildren();
-            deck.slice(tidx, tidx+VISIBLE).forEach(r => grid.appendChild(cardEl(r)));
-        }
-        function cycleReviews(){ tidx += VISIBLE; if (tidx >= deck.length){ deck = shuffle(REVIEWS); tidx = 0; } renderReviews(); }
-        deck = shuffle(REVIEWS); renderReviews(); setInterval(cycleReviews, 7000);
+        const reviewGrid = document.getElementById('testimonialGrid');
+        reviewGrid.replaceChildren();
+        REVIEWS.forEach(r => reviewGrid.appendChild(cardEl(r)));
 
         // Lead form
         document.getElementById('leadForm').addEventListener('submit', async function(e){
