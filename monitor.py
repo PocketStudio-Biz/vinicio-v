@@ -24,6 +24,11 @@ from pathlib import Path
 import requests
 
 PROFILE_URL = "https://www.taskrabbit.com/profile/vinicio-v--2"
+# Site labels that don't match the TaskRabbit category name exactly.
+RATE_SOURCE = {
+    "Moving Help": "Help Moving",
+    "Laundry Service": "Laundry and Ironing",
+}
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "profile-stats.json"
 CHANGELOG = ROOT / "data" / "changelog.json"
@@ -46,17 +51,17 @@ STATIC = {
         "minimum on most tasks."
     ),
     "services": [
-        {"name": "Yard Work", "count": 21, "price": "$41.29/hr",
+        {"name": "Yard Work", "count": 21, "price": "$53.68/hr",
          "blurb": "Mowing, edging, planting, clean-up and landscaping."},
-        {"name": "Cleaning", "count": 35, "price": "$47.49/hr",
+        {"name": "Cleaning", "count": 35, "price": "$53.68/hr",
          "blurb": "Deep cleans, move-in/out, organizing — detail-obsessed."},
-        {"name": "Moving Help", "count": 13, "price": "$43.33/hr",
+        {"name": "Moving Help", "count": 13, "price": "$48.52/hr",
          "blurb": "Loading, unloading, in-home moves, furniture."},
-        {"name": "Car Washing", "count": 7, "price": "$49.55/hr",
+        {"name": "Car Washing", "count": 7, "price": "$48.52/hr",
          "blurb": "Interior + exterior detailing at your place."},
         {"name": "Estate Cleanout", "count": 5, "price": "$50/hr",
          "blurb": "Whole-home clear-outs, sorting, removal."},
-        {"name": "Laundry Service", "count": 1, "price": "$32/hr",
+        {"name": "Laundry Service", "count": 1, "price": "$52.65/hr",
          "blurb": "Wash, fold, and closet organization."},
     ],
     "gallery": [
@@ -73,6 +78,29 @@ STATIC = {
 
 def log(msg):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
+
+
+def parse_rates(html):
+    """Map TaskRabbit category name to the posted hourly rate."""
+    rates = {}
+    for match in re.finditer(
+        r'"name":"((?:\\.|[^"\\])*)","posterRateDisplay":"(\$[^"]+)"',
+        html,
+    ):
+        name = json.loads('"' + match.group(1) + '"')
+        rates.setdefault(name, match.group(2))
+    return rates
+
+
+def apply_rates(services, rates):
+    updated = []
+    for service in services:
+        service = dict(service)
+        source = RATE_SOURCE.get(service["name"], service["name"])
+        if rates.get(source):
+            service["price"] = rates[source]
+        updated.append(service)
+    return updated
 
 
 def scrape():
@@ -110,6 +138,7 @@ def scrape():
         "vehicles": vehicles.replace("Vehicles: ", "").strip(),
         "avatar": avatar,
         "profile_url": PROFILE_URL,
+        "rates": parse_rates(html),
     }
 
 
@@ -144,6 +173,7 @@ def diff(old, new):
 
 def build_record(live):
     rec = dict(STATIC)
+    rec["services"] = apply_rates(STATIC["services"], live.get("rates") or {})
     rec.update({
         "rating": live["rating"],
         "reviews": live["reviews"],
