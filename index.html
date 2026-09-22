@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicio V. — Seattle Professional Services</title>
-    <meta name="description" content="Vinicio V. — Seattle professional services. Yard work, deep cleaning, moving help, car detailing & estate cleanouts. 5.0★ with 200+ tasks completed.">
-    <meta property="og:title" content="Vinicio V. — Seattle Professional Services">
-    <meta property="og:description" content="Yard work, deep cleaning, moving help, car detailing & estate cleanouts in Seattle. 5.0★ rated.">
+    <title>Vinicio V. | Yard work, cleaning, and moving help in Seattle</title>
+    <meta name="description" content="Yard work, cleaning, moving help, car washing, laundry, and estate cleanouts in Seattle. Rated 5.0 from 59 reviews. 217 tasks completed.">
+    <meta property="og:title" content="Vinicio V. | Yard work, cleaning, and moving help in Seattle">
+    <meta property="og:description" content="Yard work, cleaning, moving help, car washing, laundry, and estate cleanouts in Seattle. Rated 5.0 from 59 reviews. 217 tasks completed.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/taskrabbit-com/image/upload/v1671878332/xzwih6lgp06emhm70i68.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vinicio V. | Yard work, cleaning, and moving help in Seattle">
+    <meta name="twitter:description" content="Yard work, cleaning, moving help, car washing, laundry, and estate cleanouts in Seattle. Rated 5.0 from 59 reviews. 217 tasks completed.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/taskrabbit-com/image/upload/v1671878332/xzwih6lgp06emhm70i68.jpg">
     <link rel="icon" href="public/logo-mark.svg" type="image/svg+xml">
     <style>
         :root {
@@ -308,7 +313,7 @@
 
     <footer>
         <div class="wrap">
-            <p>Vinicio V. · Seattle</p>
+            <p>Vinicio V. · Seattle, WA</p>
             <p><a href="https://www.taskrabbit.com/profile/vinicio-v--2" target="_blank" rel="noopener">taskrabbit.com/profile/vinicio-v--2</a></p>
             <p class="updated" id="updated"></p>
             <p>© <span id="year"></span></p>
@@ -316,6 +321,7 @@
     </footer>
 
     <div class="lightbox" id="lightbox"><img id="lightboxImg" alt="Enlarged photo"></div>
+    <script type="application/ld+json" id="businessLd"></script>
 
     <!-- Last-known-good fallback so the page renders even if the JSON fetch fails -->
     <script type="application/json" id="fallbackData">
@@ -404,17 +410,28 @@
             }
 
             // Gallery
+            const YARD_ALTS = [
+                'Yard cleanup in Seattle',
+                'Mowed lawn in Seattle',
+                'Edged yard in Seattle',
+                'Garden bed in Seattle',
+                'Cleared yard in Seattle',
+                'Planted bed in Seattle'
+            ];
             const ggrid = document.getElementById('galleryGrid');
             if (ggrid && Array.isArray(data.gallery)){
                 ggrid.replaceChildren();
-                data.gallery.forEach(src => {
+                data.gallery.forEach((src, i) => {
                     const img = el('img');
-                    img.src = src; img.alt = 'Vinicio V. — recent job';
+                    img.src = src;
+                    img.alt = YARD_ALTS[i] || 'Yard cleanup in Seattle';
                     img.loading = 'lazy';
-                    img.addEventListener('click', () => openLightbox(src));
+                    img.addEventListener('click', () => openLightbox(src, img.alt));
                     ggrid.appendChild(img);
                 });
             }
+
+            writeSeo(data);
 
             if (data.last_updated){
                 const d = new Date(data.last_updated);
@@ -424,7 +441,67 @@
 
         // Lightbox
         const lb = document.getElementById('lightbox');
-        function openLightbox(src){ document.getElementById('lightboxImg').src = src; lb.classList.add('open'); }
+        function openLightbox(src, alt){
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            img.alt = alt || 'Enlarged photo';
+            lb.classList.add('open');
+        }
+
+        function setMeta(selector, value){
+            const node = document.querySelector(selector);
+            if (node && value) node.setAttribute('content', value);
+        }
+        function hourlyAmount(price){
+            const match = String(price || '').replace(/,/g, '').match(/(\d+(?:\.\d+)?)/);
+            return match ? match[1] : undefined;
+        }
+        function writeSeo(data){
+            const desc = `Yard work, cleaning, moving help, car washing, laundry, and estate cleanouts in Seattle. Rated ${data.rating} from ${data.reviews} reviews. ${data.tasks} tasks completed.`;
+            const title = 'Vinicio V. | Yard work, cleaning, and moving help in Seattle';
+            document.title = title;
+            setMeta('meta[name="description"]', desc);
+            setMeta('meta[property="og:title"]', title);
+            setMeta('meta[property="og:description"]', desc);
+            setMeta('meta[name="twitter:title"]', title);
+            setMeta('meta[name="twitter:description"]', desc);
+            const image = portraitUrl(data.avatar);
+            if (image && image.startsWith('http')){
+                setMeta('meta[property="og:image"]', image);
+                setMeta('meta[name="twitter:image"]', image);
+            }
+            const profile = data.profile_url || 'https://www.taskrabbit.com/profile/vinicio-v--2';
+            const offers = (data.services || []).map(service => {
+                const offer = { '@type': 'Offer', name: service.name, priceCurrency: 'USD' };
+                const price = hourlyAmount(service.price);
+                if (price){ offer.price = price; offer.unitText = 'HOUR'; }
+                return offer;
+            });
+            const ld = {
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                name: data.name || 'Vinicio V.',
+                image: image && image.startsWith('http') ? image : undefined,
+                url: profile,
+                areaServed: 'Seattle',
+                address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Seattle',
+                    addressRegion: 'WA',
+                    addressCountry: 'US'
+                },
+                aggregateRating: {
+                    '@type': 'AggregateRating',
+                    ratingValue: String(data.rating),
+                    reviewCount: String(data.reviews),
+                    bestRating: '5'
+                },
+                makesOffer: offers,
+                sameAs: profile
+            };
+            const node = document.getElementById('businessLd');
+            if (node) node.textContent = JSON.stringify(ld);
+        }
         function closeLightbox(){ lb.classList.remove('open'); }
         lb.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
