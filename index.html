@@ -264,26 +264,24 @@
             <div class="panel">
                 <h2>If it doesn't</h2>
                 <p>Send what you need and where. I'll write back if I can do it, and what it would cost.</p>
-                <form id="leadForm" action="https://formsubmit.co/ajax/berlinsofio80@gmail.com" method="POST">
+                <form id="leadForm" action="https://formspree.io/f/mzblqjkd" method="POST" novalidate>
                     <input type="hidden" name="_subject" value="Quote request for Vinicio V.">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required autocomplete="name">
+                        <input type="text" id="name" name="name" autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="text" id="email" name="email" inputmode="email" autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" required autocomplete="tel">
+                        <input type="text" id="phone" name="phone" inputmode="tel" autocomplete="tel">
                     </div>
                     <div class="form-group">
                         <label for="project">The job</label>
-                        <textarea id="project" name="message" required></textarea>
+                        <textarea id="project" name="message"></textarea>
                     </div>
                     <button type="submit" class="btn">Send</button>
                 </form>
@@ -443,10 +441,17 @@
         document.getElementById('leadForm').addEventListener('submit', async function(e){
             e.preventDefault();
             const form = this;
-            if (!form.checkValidity()) { form.reportValidity(); return; }
-            const data = Object.fromEntries(new FormData(form).entries());
-            if (data._honey) return;
-            data._replyto = data.email;
+            const data = new FormData(form);
+            if (data.get('_honey')) return;
+            data.delete('_honey');
+            const typed = String(data.get('email') || '').trim();
+            data.delete('email');
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(typed)) {
+                data.set('email', typed);
+                data.set('_replyto', typed);
+            } else if (typed) {
+                data.set('contact', typed);
+            }
             const btn = form.querySelector('button'); btn.disabled = true;
             const errEl = document.getElementById('formError');
             errEl.textContent = "That didn't send. Try again in a minute.";
@@ -454,19 +459,15 @@
             try {
                 const res = await fetch(form.action, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                    body: JSON.stringify(data)
+                    body: data,
+                    headers: { Accept: 'application/json' }
                 });
                 const body = await res.json().catch(() => ({}));
-                if (res.ok && String(body.success) !== 'false'){
+                if (res.ok && body.ok !== false && String(body.success) !== 'false'){
                     form.style.display = 'none';
                     document.getElementById('formSuccess').style.display = 'block';
-                } else if (/activ/i.test(body.message || '')) {
-                    const err = document.getElementById('formError');
-                    err.textContent = 'Almost. Open berlinsofio80@gmail.com and click the activation link from FormSubmit. After that, requests sent here will arrive.';
-                    err.style.display = 'block';
                 } else throw new Error('bad');
-            } catch (err){ document.getElementById('formError').style.display = 'block'; }
+            } catch (err){ errEl.style.display = 'block'; }
             finally { btn.disabled = false; }
         });
 

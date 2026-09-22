@@ -31,7 +31,7 @@ Captures leads for:
 - Custom project requirements
 - Price negotiations
 
-**Submits to:** `berlinsofio80@gmail.com` via FormSubmit
+**Submits to:** `berlinsofio80@gmail.com` via Formspree
 
 ## Real Taskrabbit Data
 
@@ -52,7 +52,7 @@ Captures leads for:
 Change the FORM_ENDPOINT variable in the `<script>` section to point to your preferred form service (Formspree, Netlify Forms, Getform, etc.)
 
 ### Email Notifications
-Quote requests are sent to `berlinsofio80@gmail.com`. The address is the FormSubmit endpoint on the quote form in `index.html`. The first submission asks that inbox to confirm delivery.
+Quote requests are sent to `berlinsofio80@gmail.com` through the Formspree form on the quote form in `index.html`. Empty or mistyped fields are still delivered.
 
 ### Services
 Update services in `data/profile-stats.json` or modify the HTML structure.
