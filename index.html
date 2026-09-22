@@ -479,17 +479,12 @@
             });
             const ld = {
                 '@context': 'https://schema.org',
-                '@type': 'LocalBusiness',
+                '@type': 'Person',
                 name: data.name || 'Vinicio V.',
                 image: image && image.startsWith('http') ? image : undefined,
                 url: profile,
+                jobTitle: 'Tasker',
                 areaServed: 'Seattle',
-                address: {
-                    '@type': 'PostalAddress',
-                    addressLocality: 'Seattle',
-                    addressRegion: 'WA',
-                    addressCountry: 'US'
-                },
                 aggregateRating: {
                     '@type': 'AggregateRating',
                     ratingValue: String(data.rating),
