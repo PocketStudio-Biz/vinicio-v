@@ -64,7 +64,7 @@ reviews = [
     {"n": "Elizabeth L.", "c": "Personal Assistant", "t": "Vinny completed my task quickly and professionally. Asked thoughtful questions."},
 ]
 
-form_action = "https://formspree.io/f/mzblqjkd"
+form_action = "https://formsubmit.co/ajax/berlinsofio80@gmail.com"
 
 service_cards = "\n".join(
     f'''        <div class="service">
@@ -240,7 +240,10 @@ footer a:hover {{ color:var(--gold); }}
       <h3>Request a custom quote</h3>
       <p>Need something outside standard services? Send details for a personalized quote.</p>
       <form id="leadForm" action="{form_action}" method="POST">
-        <input type="hidden" name="_subject" value="New Custom Quote Request">
+        <input type="hidden" name="_subject" value="Quote request for Vinicio V.">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
         <div class="form-group"><label for="name">Full name</label><input type="text" id="name" name="name" required placeholder="Jane Doe"></div>
         <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="you@example.com"></div>
         <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required placeholder="(206) 555-1234"></div>
@@ -270,11 +273,14 @@ footer a:hover {{ color:var(--gold); }}
 <script>
 document.getElementById('leadForm').addEventListener('submit', async function(e){{
   e.preventDefault();
-  var form=this, data=new FormData(form);
+  var form=this, data=Object.fromEntries(new FormData(form).entries());
+  if(data._honey) return;
+  data._replyto=data.email;
   var btn=form.querySelector('button'); btn.disabled=true;
   try {{
-    var res=await fetch(form.action,{{method:'POST',body:data,headers:{{Accept:'application/json'}}}});
-    if(res.ok){{ form.style.display='none'; document.getElementById('formSuccess').style.display='block'; }}
+    var res=await fetch(form.action,{{method:'POST',headers:{{'Content-Type':'application/json',Accept:'application/json'}},body:JSON.stringify(data)}});
+    var body=await res.json().catch(function(){{return {{}};}});
+    if(res.ok && String(body.success)!=='false'){{ form.style.display='none'; document.getElementById('formSuccess').style.display='block'; }}
     else throw new Error('bad');
   }} catch(err){{ document.getElementById('formError').style.display='block'; }}
   finally {{ btn.disabled=false; }}

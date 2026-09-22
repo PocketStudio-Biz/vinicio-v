@@ -263,7 +263,11 @@
             <div class="panel">
                 <h2>If it doesn't</h2>
                 <p>Send what you need and where. I'll write back if I can do it, and what it would cost.</p>
-                <form id="leadForm" novalidate>
+                <form id="leadForm" action="https://formsubmit.co/ajax/berlinsofio80@gmail.com" method="POST" novalidate>
+                    <input type="hidden" name="_subject" value="Quote request for Vinicio V.">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required autocomplete="name">
@@ -278,7 +282,7 @@
                     </div>
                     <div class="form-group">
                         <label for="project">The job</label>
-                        <textarea id="project" name="project" required></textarea>
+                        <textarea id="project" name="message" required></textarea>
                     </div>
                     <button type="submit" class="btn">Send</button>
                 </form>
@@ -435,14 +439,28 @@
         // Lead form
         document.getElementById('leadForm').addEventListener('submit', async function(e){
             e.preventDefault();
-            const form = this, data = new FormData(form);
-            data.append('_subject', 'New Custom Quote Request');
+            const form = this;
+            const data = Object.fromEntries(new FormData(form).entries());
+            if (data._honey) return;
+            data._replyto = data.email;
             const btn = form.querySelector('button'); btn.disabled = true;
+            document.getElementById('formError').style.display = 'none';
             try {
-                const res = await fetch('https://formspree.io/f/mzblqjkd', { method:'POST', body: data, headers:{ Accept:'application/json' }});
-                if (res.ok){ form.style.display='none'; document.getElementById('formSuccess').style.display='block'; }
-                else throw new Error('bad');
-            } catch (err){ document.getElementById('formError').style.display='block'; }
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const body = await res.json().catch(() => ({}));
+                if (res.ok && String(body.success) !== 'false'){
+                    form.style.display = 'none';
+                    document.getElementById('formSuccess').style.display = 'block';
+                } else if (/activ/i.test(body.message || '')) {
+                    const err = document.getElementById('formError');
+                    err.textContent = 'Almost. Open berlinsofio80@gmail.com and click the activation link from FormSubmit. After that, requests sent here will arrive.';
+                    err.style.display = 'block';
+                } else throw new Error('bad');
+            } catch (err){ document.getElementById('formError').style.display = 'block'; }
             finally { btn.disabled = false; }
         });
 
