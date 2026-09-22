@@ -8,6 +8,7 @@
     <meta property="og:title" content="Vinicio V. — Seattle Professional Services">
     <meta property="og:description" content="Yard work, deep cleaning, moving help, car detailing & estate cleanouts in Seattle. 5.0★ rated.">
     <meta property="og:type" content="website">
+    <link rel="icon" href="public/logo-mark.svg" type="image/svg+xml">
     <style>
         :root {
             --bg: #f4f1ea;
@@ -263,7 +264,7 @@
             <div class="panel">
                 <h2>If it doesn't</h2>
                 <p>Send what you need and where. I'll write back if I can do it, and what it would cost.</p>
-                <form id="leadForm" action="https://formsubmit.co/ajax/berlinsofio80@gmail.com" method="POST" novalidate>
+                <form id="leadForm" action="https://formsubmit.co/ajax/berlinsofio80@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="Quote request for Vinicio V.">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
@@ -295,7 +296,7 @@
     <section id="reviews" class="section">
         <div class="section-head">
             <h2>What people wrote</h2>
-            <p id="reviewsSub">Copied from the TaskRabbit profile.</p>
+            <p id="reviewsSub">Some of the notes on his TaskRabbit profile.</p>
         </div>
         <div class="testimonial-grid" id="testimonialGrid"></div>
     </section>
@@ -309,7 +310,7 @@
         </div>
     </footer>
 
-    <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt=""></div>
+    <div class="lightbox" id="lightbox"><img id="lightboxImg" alt="Enlarged photo"></div>
 
     <!-- Last-known-good fallback so the page renders even if the JSON fetch fails -->
     <script type="application/json" id="fallbackData">
@@ -419,7 +420,9 @@
         // Lightbox
         const lb = document.getElementById('lightbox');
         function openLightbox(src){ document.getElementById('lightboxImg').src = src; lb.classList.add('open'); }
-        lb.addEventListener('click', () => lb.classList.remove('open'));
+        function closeLightbox(){ lb.classList.remove('open'); }
+        lb.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
         function cardEl(r){
             const card = el('div','testimonial');
@@ -440,11 +443,14 @@
         document.getElementById('leadForm').addEventListener('submit', async function(e){
             e.preventDefault();
             const form = this;
+            if (!form.checkValidity()) { form.reportValidity(); return; }
             const data = Object.fromEntries(new FormData(form).entries());
             if (data._honey) return;
             data._replyto = data.email;
             const btn = form.querySelector('button'); btn.disabled = true;
-            document.getElementById('formError').style.display = 'none';
+            const errEl = document.getElementById('formError');
+            errEl.textContent = "That didn't send. Try again in a minute.";
+            errEl.style.display = 'none';
             try {
                 const res = await fetch(form.action, {
                     method: 'POST',
