@@ -23,7 +23,7 @@ vinicio-v-services/
 ### 1. TaskRabbit Booking (Default)
 - Link: `taskrabbit.com/profile/vinicio-v--2`
 - Standard services: Yard Work, Cleaning, Moving, Car Wash
-- Fixed hourly rates ($41 - $50/hr)
+- Fixed hourly rates ($48.52 - $53.68/hr)
 
 ### 2. Custom Quote Form
 Captures leads for:
@@ -37,12 +37,12 @@ Captures leads for:
 
 | Service | Jobs | Rate |
 |---------|------|------|
-| Yard Work | 21 | $41.29/hr |
-| Cleaning | 35 | $47.49/hr |
-| Moving Help | 13 | $43.33/hr |
-| Car Washing | 7 | $49.55/hr |
+| Yard Work | 21 | $53.68/hr |
+| Cleaning | 35 | $53.68/hr |
+| Moving Help | 13 | $48.52/hr |
+| Car Washing | 7 | $48.52/hr |
 | Estate Cleanout | 5 | $50/hr |
-| Laundry Service | 1 | $32/hr |
+| Laundry Service | 1 | $52.65/hr |
 
 **Total:** 214+ tasks completed | 55 reviews | 5.0★ rating
 

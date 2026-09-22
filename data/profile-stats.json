@@ -5,25 +5,25 @@
     {
       "name": "Yard Work",
       "count": 21,
-      "price": "$41.29/hr",
+      "price": "$53.68/hr",
       "blurb": "Mowing, edging, planting, clean-up and landscaping."
     },
     {
       "name": "Cleaning",
       "count": 35,
-      "price": "$47.49/hr",
+      "price": "$53.68/hr",
       "blurb": "Deep cleans, move-in/out, organizing \u2014 detail-obsessed."
     },
     {
       "name": "Moving Help",
       "count": 13,
-      "price": "$43.33/hr",
+      "price": "$48.52/hr",
       "blurb": "Loading, unloading, in-home moves, furniture."
     },
     {
       "name": "Car Washing",
       "count": 7,
-      "price": "$49.55/hr",
+      "price": "$48.52/hr",
       "blurb": "Interior + exterior detailing at your place."
     },
     {
@@ -35,7 +35,7 @@
     {
       "name": "Laundry Service",
       "count": 1,
-      "price": "$32/hr",
+      "price": "$52.65/hr",
       "blurb": "Wash, fold, and closet organization."
     }
   ],
@@ -60,5 +60,5 @@
     "label": "Travel fee temporarily waived",
     "sublabel": "No extra charge for jobs in the Seattle area right now."
   },
-  "last_updated": "2026-08-24T03:05:28.203163+00:00"
+  "last_updated": "2026-09-22T16:58:00+00:00"
 }
