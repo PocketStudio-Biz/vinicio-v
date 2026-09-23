@@ -147,7 +147,6 @@
             cursor: zoom-in;
             background: #e7e1d6;
         }
-        .gallery-grid img:nth-child(5) { width: 344px; height: 344px; }
 
         .lightbox {
             position: fixed; inset: 0; background: rgba(20,16,12,.92);
@@ -204,7 +203,6 @@
             .hero-inner, .quote-grid { grid-template-columns: 1fr; }
             .hero-avatar { width: 168px; height: 168px; }
             .gallery-grid img { width: calc(50% - 4px); height: auto; aspect-ratio: 1; }
-            .gallery-grid img:nth-child(5) { width: 100%; }
             .service { grid-template-areas: "name price" "blurb blurb" "meta book"; }
         }
     </style>
@@ -301,7 +299,7 @@
     <section id="reviews" class="section">
         <div class="section-head">
             <h2>What people wrote</h2>
-            <p id="reviewsSub">Some of the notes on his TaskRabbit profile.</p>
+            <p id="reviewsSub">Latest notes from his TaskRabbit profile — refreshed daily.</p>
         </div>
         <div class="testimonial-grid" id="testimonialGrid"></div>
     </section>
@@ -325,33 +323,13 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ----- Real reviews scraped from the TaskRabbit profile -----
-        const REVIEWS = [
+        // Fallback reviews if JSON has none yet (kept short; live list comes from profile-stats.json)
+        const FALLBACK_REVIEWS = [
             {n:"Annabelle C.", c:"Car Washing", t:"Vinicio did an incredible job- quick and communicative."},
-            {n:"Anuj S.", c:"Car Washing", t:"Very kind, and attentive to detail. Thanks Vinicio. Highly recommend to others"},
-            {n:"Alexa C.", c:"Car Washing", t:"He was fantastic! On time, cleaned very well and throughly, and was so respectful! 10/10!"},
-            {n:"Juan N.", c:"Car Washing", t:"Five stars for Vinicio! He arrived exactly when he said he would and did a phenomenal job detailing my car's interior. Super professional and easy to work with."},
-            {n:"Shoaa A.", c:"Cleaning", t:"Vinicio is a hard worker and did a thorough job cleaning our place. He went above and beyond to fix things and clean."},
-            {n:"Dante M.", c:"Cleaning", t:"Vinicio was AMAZING! He will become our regular to-go person for anything we need around the house and cleaning. The house smelled like dog, everything was dirty… and he DETAILED the place. Can't recommend him enough!"},
-            {n:"Prasanth D.", c:"Cleaning", t:"Vinicio was great at deep cleaning, had no complaints at the end. Was very kind, courteous and very respectful of time."},
-            {n:"Jordan W.", c:"Cleaning", t:"Highly highly recommend! Vinicio is multi-talented, efficient, and has a great eye for detail."},
-            {n:"Isabelle B.", c:"Cleaning", t:"Vinicio is an absolute lifesaver. His attention to detail was phenomenal—windows, kitchen, blinds, balcony, even the fridge and stove looked brand new."},
-            {n:"Alexandra R.", c:"Cleaning", t:"10/10 recommend! Vinicio cleaned our apartment after we moved out and the place was spotless. He had his own supplies and was a professional."},
-            {n:"Farah B.", c:"Errands", t:"Vinicio was extremely professional, efficient, and helpful. He is easy to communicate with and a great problem solver."},
-            {n:"Nir S.", c:"Help Moving", t:"Great work"},
-            {n:"Sharon C.", c:"Help Moving", t:"Vinicio is a super star, absolutely exceptional! He showed up 10 mins early… such an amazingly bright attitude."},
-            {n:"Christine S.", c:"Help Moving", t:"Vinicio was amazing! He was friendly, focused, a great communicator, and incredibly hardworking and efficient."},
-            {n:"Sinja M.", c:"Help Moving", t:"Vinci is simply the best. He's helped me with so many different things and even took an extra two hours just to help me move."},
-            {n:"Sarah S.", c:"Landscaping Help", t:"Vinicio did an AWESOME job cleaning up around my garden… looks amazing and would 10000% hire him again."},
-            {n:"Kerry M.", c:"Laundry and Ironing", t:"Vinicio took a completely messy closet and a huge pile of clothes and turned it into a well-organized walk-in closet."},
-            {n:"Mack O.", c:"Yard Work", t:"10 stars! Best job of any takers I've hired. Super thorough and careful plus friendly and easy to work with… Our yard looks so much better!"},
-            {n:"Sid K.", c:"Yard Work", t:"Vini was awesome. He created a very nice design with grass and mulch and planted multiple beautiful plants. Would highly recommend Vini."},
-            {n:"Vinod S.", c:"Yard Work", t:"Vinicio was very professional and communicated very clearly… He also ensured the backyard looks completely clean and tidy."},
-            {n:"Syed A.", c:"Truck Assisted Help Moving", t:"Vinio will go above and beyond to make sure you get what you're hiring him for, he has a great attitude and was extremely helpful."},
-            {n:"Suzanne W.", c:"Truck Assisted Help Moving", t:"Vinicio did a great job! He was flexible with his scheduling… got my items moved quickly and carefully."},
-            {n:"Arun C.", c:"Truck Assisted Help Moving", t:"Vini was outstanding. This was clearly a two-person job, but he handled everything on his own with professionalism and efficiency."},
-            {n:"Troy D.", c:"Personal Assistant", t:"Vinicio was kind and on top of it. Good communication. Would work with him again!"},
-            {n:"Elizabeth L.", c:"Personal Assistant", t:"Vinny completed my task quickly and professionally. He asked thoughtful questions so that he was able to get right to work."}
+            {n:"Dante M.", c:"Cleaning", t:"Vinicio was AMAZING! He DETAILED the place. Can't recommend him enough!"},
+            {n:"Mack O.", c:"Yard Work", t:"10 stars! Our yard looks so much better!"},
+            {n:"Sharon C.", c:"Help Moving", t:"Vinicio is a super star, absolutely exceptional!"},
+            {n:"Elizabeth L.", c:"Personal Assistant", t:"Vinny completed my task quickly and professionally."}
         ];
 
         // XSS-safe helpers — never inject raw data as HTML
@@ -361,6 +339,26 @@
             return url.replace(/\/upload\/(?:[^/]+\/)?(?=v\d+\/)/, '/upload/');
         }
         function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+        function cardEl(r){
+            const card = el('div','testimonial');
+            card.appendChild(el('p', null, r.t || 'Left a 5-star rating.'));
+            const author = el('div','testimonial-author');
+            const meta = el('div','author-meta');
+            meta.appendChild(el('strong', null, r.n));
+            meta.appendChild(el('span', null, r.c));
+            author.appendChild(meta);
+            card.appendChild(author);
+            return card;
+        }
+
+        function renderReviews(list){
+            const reviewGrid = document.getElementById('testimonialGrid');
+            if (!reviewGrid) return;
+            const items = (Array.isArray(list) && list.length) ? list : FALLBACK_REVIEWS;
+            reviewGrid.replaceChildren();
+            items.forEach(r => reviewGrid.appendChild(cardEl(r)));
+        }
 
         function render(data){
             if (!data) return;
@@ -416,6 +414,9 @@
                 });
             }
 
+            // Reviews / testimonials (auto-updated from TaskRabbit)
+            renderReviews(data.testimonials);
+
             if (data.last_updated){
                 const d = new Date(data.last_updated);
                 txt('updated', `Rates checked ${isNaN(d) ? data.last_updated : d.toLocaleDateString()}.`);
@@ -428,21 +429,6 @@
         function closeLightbox(){ lb.classList.remove('open'); }
         lb.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-
-        function cardEl(r){
-            const card = el('div','testimonial');
-            card.appendChild(el('p', null, r.t || 'Left a 5-star rating.'));
-            const author = el('div','testimonial-author');
-            const meta = el('div','author-meta');
-            meta.appendChild(el('strong', null, r.n));
-            meta.appendChild(el('span', null, r.c));
-            author.appendChild(meta);
-            card.appendChild(author);
-            return card;
-        }
-        const reviewGrid = document.getElementById('testimonialGrid');
-        reviewGrid.replaceChildren();
-        REVIEWS.forEach(r => reviewGrid.appendChild(cardEl(r)));
 
         // Lead form
         document.getElementById('leadForm').addEventListener('submit', async function(e){
@@ -489,6 +475,9 @@
                 try { data = JSON.parse(document.getElementById('fallbackData').textContent); } catch(_) {}
             }
             render(data);
+            if (!data || !Array.isArray(data.testimonials) || !data.testimonials.length){
+                renderReviews(FALLBACK_REVIEWS);
+            }
         })();
     </script>
 </body>

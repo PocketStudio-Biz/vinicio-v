@@ -23,5 +23,78 @@
         "to": "Car"
       }
     ]
+  },
+  {
+    "ts": "2026-09-22T16:58:13.965974+00:00",
+    "changes": [
+      {
+        "field": "reviews",
+        "from": 59,
+        "to": 69
+      },
+      {
+        "field": "tasks",
+        "from": 217,
+        "to": 265
+      },
+      {
+        "field": "testimonials_added",
+        "from": null,
+        "to": 69
+      },
+      {
+        "field": "gallery_added",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2302743.jpg",
+          "public/gallery/tr-2302744.jpg",
+          "public/gallery/tr-2335616.jpg",
+          "public/gallery/tr-2335617.jpg",
+          "public/gallery/tr-2335618.jpg",
+          "public/gallery/tr-2335619.jpg",
+          "public/gallery/tr-2335623.jpg",
+          "public/gallery/tr-2366047.jpg",
+          "public/gallery/tr-2366048.jpg",
+          "public/gallery/tr-2366049.jpg",
+          "public/gallery/tr-2366050.jpg",
+          "public/gallery/tr-2366051.jpg",
+          "public/gallery/tr-2366053.jpg",
+          "public/gallery/tr-3201011.jpg",
+          "public/gallery/tr-5812979.jpg",
+          "public/gallery/tr-5812987.jpg",
+          "public/gallery/tr-5812988.jpg",
+          "public/gallery/tr-5840001.jpg"
+        ]
+      },
+      {
+        "field": "gallery_removed",
+        "from": null,
+        "to": [
+          "public/gallery/yard1.jpg",
+          "public/gallery/yard2.jpg",
+          "public/gallery/yard3.jpg",
+          "public/gallery/yard4.jpg",
+          "public/gallery/yard5_large.jpg",
+          "public/gallery/yard6.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "ts": "2026-09-22T16:59:06.103420+00:00",
+    "changes": [
+      {
+        "field": "gallery_removed",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2302743.jpg",
+          "public/gallery/tr-2302744.jpg",
+          "public/gallery/tr-2335616.jpg",
+          "public/gallery/tr-2335617.jpg",
+          "public/gallery/tr-2335618.jpg",
+          "public/gallery/tr-2335619.jpg"
+        ]
+      }
+    ]
   }
 ]
