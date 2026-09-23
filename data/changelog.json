@@ -96,5 +96,38 @@
         ]
       }
     ]
+  },
+  {
+    "ts": "2026-09-23T18:18:34.327472+00:00",
+    "changes": [
+      {
+        "field": "tasks",
+        "from": 265,
+        "to": 266
+      },
+      {
+        "field": "testimonials_removed",
+        "from": null,
+        "to": 69
+      },
+      {
+        "field": "gallery_removed",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2335623.jpg",
+          "public/gallery/tr-2366047.jpg",
+          "public/gallery/tr-2366048.jpg",
+          "public/gallery/tr-2366049.jpg",
+          "public/gallery/tr-2366050.jpg",
+          "public/gallery/tr-2366051.jpg",
+          "public/gallery/tr-2366053.jpg",
+          "public/gallery/tr-3201011.jpg",
+          "public/gallery/tr-5812979.jpg",
+          "public/gallery/tr-5812987.jpg",
+          "public/gallery/tr-5812988.jpg",
+          "public/gallery/tr-5840001.jpg"
+        ]
+      }
+    ]
   }
 ]
