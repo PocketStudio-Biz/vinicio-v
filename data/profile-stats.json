@@ -1,6 +1,6 @@
 {
   "name": "Vinicio V.",
-  "bio": "I'm a part-time Tasker to help pay off my student loans. I find joy in helping other fix or mend things that they cannot. I prioritize integrity and hard work, and would love to work with you. For most of my task I require a two hour minimum.",
+  "bio": "Part-time Tasker helping pay off student loans \u2014 and genuinely enjoying the work. Integrity and hard work come first. Two-hour minimum on most tasks.",
   "services": [
     {
       "name": "Yard Work",
@@ -40,13 +40,13 @@
     }
   ],
   "gallery": [],
-  "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
+  "avatar": "public/profile.jpg",
   "rating": "5.0",
-  "reviews": 69,
-  "tasks": 266,
+  "reviews": 0,
+  "tasks": 0,
   "location": "Seattle, WA",
-  "since": 2023,
-  "vehicles": "Car",
+  "since": null,
+  "vehicles": "",
   "profile_url": "https://www.taskrabbit.com/profile/vinicio-v--2",
   "travelFee": {
     "feeWaived": true,
@@ -54,5 +54,5 @@
     "sublabel": "No extra charge for jobs in the Seattle area right now."
   },
   "testimonials": [],
-  "last_updated": "2026-09-23T18:18:34.327472+00:00"
+  "last_updated": "2026-09-24T18:19:10.540014+00:00"
 }

@@ -129,5 +129,30 @@
         ]
       }
     ]
+  },
+  {
+    "ts": "2026-09-24T18:19:10.540014+00:00",
+    "changes": [
+      {
+        "field": "reviews",
+        "from": 69,
+        "to": 0
+      },
+      {
+        "field": "tasks",
+        "from": 266,
+        "to": 0
+      },
+      {
+        "field": "since",
+        "from": 2023,
+        "to": null
+      },
+      {
+        "field": "vehicles",
+        "from": "Car",
+        "to": ""
+      }
+    ]
   }
 ]
