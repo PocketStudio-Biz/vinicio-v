@@ -154,5 +154,53 @@
         "to": ""
       }
     ]
+  },
+  {
+    "ts": "2026-09-25T18:19:06.678640+00:00",
+    "changes": [
+      {
+        "field": "reviews",
+        "from": 0,
+        "to": 69
+      },
+      {
+        "field": "tasks",
+        "from": 0,
+        "to": 268
+      },
+      {
+        "field": "since",
+        "from": null,
+        "to": 2023
+      },
+      {
+        "field": "vehicles",
+        "from": "",
+        "to": "Car"
+      },
+      {
+        "field": "testimonials_added",
+        "from": null,
+        "to": 69
+      },
+      {
+        "field": "gallery_added",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2335623.jpg",
+          "public/gallery/tr-2366047.jpg",
+          "public/gallery/tr-2366048.jpg",
+          "public/gallery/tr-2366049.jpg",
+          "public/gallery/tr-2366050.jpg",
+          "public/gallery/tr-2366051.jpg",
+          "public/gallery/tr-2366053.jpg",
+          "public/gallery/tr-3201011.jpg",
+          "public/gallery/tr-5812979.jpg",
+          "public/gallery/tr-5812987.jpg",
+          "public/gallery/tr-5812988.jpg",
+          "public/gallery/tr-5840001.jpg"
+        ]
+      }
+    ]
   }
 ]
