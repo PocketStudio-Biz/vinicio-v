@@ -4,13 +4,13 @@
   "services": [
     {
       "name": "Yard Work",
-      "count": 28,
+      "count": 31,
       "price": "$53.68/hr",
       "blurb": "Mowing, edging, planting, clean-up and landscaping."
     },
     {
       "name": "Cleaning",
-      "count": 42,
+      "count": 48,
       "price": "$53.68/hr",
       "blurb": "Deep cleans, move-in/out, organizing \u2014 detail-obsessed."
     },
@@ -22,7 +22,7 @@
     },
     {
       "name": "Car Washing",
-      "count": 7,
+      "count": 9,
       "price": "$48.52/hr",
       "blurb": "Interior + exterior detailing at your place."
     },
@@ -56,7 +56,7 @@
   "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
   "rating": "5.0",
   "reviews": 69,
-  "tasks": 268,
+  "tasks": 269,
   "location": "Seattle, WA",
   "since": 2023,
   "vehicles": "Car",
@@ -620,5 +620,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-09-25T18:19:06.678640+00:00"
+  "last_updated": "2026-09-26T17:39:27.055099+00:00"
 }
