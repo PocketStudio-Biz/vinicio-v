@@ -55,8 +55,8 @@
   ],
   "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
   "rating": "5.0",
-  "reviews": 69,
-  "tasks": 269,
+  "reviews": 70,
+  "tasks": 271,
   "location": "Seattle, WA",
   "since": 2023,
   "vehicles": "Car",
@@ -67,6 +67,14 @@
     "sublabel": "No extra charge for jobs in the Seattle area right now."
   },
   "testimonials": [
+    {
+      "id": 12019403,
+      "n": "Michellr B.",
+      "c": "Yard Work",
+      "t": "We were very happy with the yard work and I\u2019d highly recommend Vinicio. He communicated before he arrived and throughout the project. He is a hard worker and  we would definitely invite him to do other project on our property.",
+      "rating": 5,
+      "createdAt": 1790490923
+    },
     {
       "id": 11994173,
       "n": "R Lance G.",
@@ -620,5 +628,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-09-26T17:39:27.055099+00:00"
+  "last_updated": "2026-09-27T18:07:09.834017+00:00"
 }
