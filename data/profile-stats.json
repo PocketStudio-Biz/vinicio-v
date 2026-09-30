@@ -55,8 +55,8 @@
   ],
   "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
   "rating": "5.0",
-  "reviews": 70,
-  "tasks": 272,
+  "reviews": 71,
+  "tasks": 273,
   "location": "Seattle, WA",
   "since": 2023,
   "vehicles": "Car",
@@ -67,6 +67,14 @@
     "sublabel": "No extra charge for jobs in the Seattle area right now."
   },
   "testimonials": [
+    {
+      "id": 12033741,
+      "n": "Kirsten H.",
+      "c": "Cleaning",
+      "t": "Great job, will definitely hire again!",
+      "rating": 5,
+      "createdAt": 1790793521
+    },
     {
       "id": 12019403,
       "n": "Michellr B.",
@@ -628,5 +636,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-09-29T19:11:48.528361+00:00"
+  "last_updated": "2026-09-30T18:53:46.086156+00:00"
 }
