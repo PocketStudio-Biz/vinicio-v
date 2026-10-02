@@ -56,7 +56,7 @@
   "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
   "rating": "5.0",
   "reviews": 71,
-  "tasks": 274,
+  "tasks": 275,
   "location": "Seattle, WA",
   "since": 2023,
   "vehicles": "Car",
@@ -636,5 +636,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-10-01T19:19:43.570816+00:00"
+  "last_updated": "2026-10-02T19:02:37.730472+00:00"
 }
