@@ -40,6 +40,9 @@
     }
   ],
   "gallery": [
+    "public/gallery/tr-5926212.jpg",
+    "public/gallery/tr-5926211.jpg",
+    "public/gallery/tr-5926210.jpg",
     "public/gallery/tr-5840001.jpg",
     "public/gallery/tr-5812988.jpg",
     "public/gallery/tr-5812987.jpg",
@@ -48,10 +51,7 @@
     "public/gallery/tr-2366053.jpg",
     "public/gallery/tr-2366051.jpg",
     "public/gallery/tr-2366050.jpg",
-    "public/gallery/tr-2366049.jpg",
-    "public/gallery/tr-2366048.jpg",
-    "public/gallery/tr-2366047.jpg",
-    "public/gallery/tr-2335623.jpg"
+    "public/gallery/tr-2366049.jpg"
   ],
   "avatar": "https://res.cloudinary.com/taskrabbit-com/image/upload/c_fill,g_faces,h_108,w_108/v1671878332/xzwih6lgp06emhm70i68.jpg",
   "rating": "5.0",
@@ -636,5 +636,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-10-02T19:02:37.730472+00:00"
+  "last_updated": "2026-10-03T17:50:12.558962+00:00"
 }

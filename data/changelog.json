@@ -282,5 +282,28 @@
         "to": 275
       }
     ]
+  },
+  {
+    "ts": "2026-10-03T17:50:12.558962+00:00",
+    "changes": [
+      {
+        "field": "gallery_added",
+        "from": null,
+        "to": [
+          "public/gallery/tr-5926210.jpg",
+          "public/gallery/tr-5926211.jpg",
+          "public/gallery/tr-5926212.jpg"
+        ]
+      },
+      {
+        "field": "gallery_removed",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2335623.jpg",
+          "public/gallery/tr-2366047.jpg",
+          "public/gallery/tr-2366048.jpg"
+        ]
+      }
+    ]
   }
 ]
