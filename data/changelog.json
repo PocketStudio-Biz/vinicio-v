@@ -335,5 +335,43 @@
         "to": 279
       }
     ]
+  },
+  {
+    "ts": "2026-10-07T19:47:43.113112+00:00",
+    "changes": [
+      {
+        "field": "reviews",
+        "from": 71,
+        "to": 72
+      },
+      {
+        "field": "tasks",
+        "from": 279,
+        "to": 282
+      },
+      {
+        "field": "testimonials_removed",
+        "from": null,
+        "to": 71
+      },
+      {
+        "field": "gallery_removed",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2366049.jpg",
+          "public/gallery/tr-2366050.jpg",
+          "public/gallery/tr-2366051.jpg",
+          "public/gallery/tr-2366053.jpg",
+          "public/gallery/tr-3201011.jpg",
+          "public/gallery/tr-5812979.jpg",
+          "public/gallery/tr-5812987.jpg",
+          "public/gallery/tr-5812988.jpg",
+          "public/gallery/tr-5840001.jpg",
+          "public/gallery/tr-5926210.jpg",
+          "public/gallery/tr-5926211.jpg",
+          "public/gallery/tr-5926212.jpg"
+        ]
+      }
+    ]
   }
 ]
