@@ -373,5 +373,33 @@
         ]
       }
     ]
+  },
+  {
+    "ts": "2026-10-10T18:17:35.238485+00:00",
+    "changes": [
+      {
+        "field": "testimonials_added",
+        "from": null,
+        "to": 72
+      },
+      {
+        "field": "gallery_added",
+        "from": null,
+        "to": [
+          "public/gallery/tr-2366049.jpg",
+          "public/gallery/tr-2366050.jpg",
+          "public/gallery/tr-2366051.jpg",
+          "public/gallery/tr-2366053.jpg",
+          "public/gallery/tr-3201011.jpg",
+          "public/gallery/tr-5812979.jpg",
+          "public/gallery/tr-5812987.jpg",
+          "public/gallery/tr-5812988.jpg",
+          "public/gallery/tr-5840001.jpg",
+          "public/gallery/tr-5926210.jpg",
+          "public/gallery/tr-5926211.jpg",
+          "public/gallery/tr-5926212.jpg"
+        ]
+      }
+    ]
   }
 ]
