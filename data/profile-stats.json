@@ -5,13 +5,13 @@
     {
       "name": "Yard Work",
       "count": 31,
-      "price": "$51.62/hr",
+      "price": "$49.55/hr",
       "blurb": "Mowing, edging, planting, clean-up and landscaping."
     },
     {
       "name": "Cleaning",
       "count": 48,
-      "price": "$53.68/hr",
+      "price": "$51.62/hr",
       "blurb": "Deep cleans, move-in/out, organizing \u2014 detail-obsessed."
     },
     {
@@ -644,5 +644,5 @@
       "createdAt": 1704389219
     }
   ],
-  "last_updated": "2026-10-11T18:41:37.282190+00:00"
+  "last_updated": "2026-10-12T22:00:08.914542+00:00"
 }
