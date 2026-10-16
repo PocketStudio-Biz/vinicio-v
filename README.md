@@ -10,6 +10,8 @@ A professional lead-generation website with two booking pathways:
 
 The site auto-updates daily from Vinicio's public TaskRabbit profile: review count, task count, rates, written testimonials, and work photos.
 
+**Leaving TaskRabbit:** see the launch & growth plan in [`references/leave-taskrabbit-growth-plan.md`](references/leave-taskrabbit-growth-plan.md) (soft transition, hard-push focus, brand stays Vinicio V.).
+
 ## Files
 
 ```
